@@ -16,6 +16,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
@@ -53,5 +54,15 @@ class Movie extends Model
     public function versions(): HasMany
     {
         return $this->hasMany(MovieVersion::class);
+    }
+
+    /**
+     * Get the genres associated with this movie.
+     *
+     * @return BelongsToMany
+     */
+    public function genres(): BelongsToMany
+    {
+        return $this->belongsToMany(Genre::class, 'movie_genre');
     }
 }
