@@ -74,7 +74,7 @@ Below is a list of planned features and their current status:
     -   [x] Movie versions table and model (Completed)
     -   [x] Genres table and model (Completed)
     -   [x] Tags table and model (Completed)
-    -   [ ] Series, episodes, and related tables (Not started)
+    -   [x] Series, episodes, and related tables (Completed)
     -   [ ] Users, wish lists, matches, and messages for social features (Not started)
 -   **Core Features**:
     -   [ ] TMDb integration for movie import (Not started)
