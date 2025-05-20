@@ -18,49 +18,39 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 /**
- * Class CreateSubtitlesTable
+ * Class CreateDisksTable
  *
- * Migration for creating the 'subtitles' table to store subtitle information for movies and episodes.
+ * Migration for creating the 'disks' table to store information about storage disks.
  */
-class CreateSubtitlesTable extends Migration
+class CreateDisksTable extends Migration
 {
     /**
      * Run the migrations.
      *
-     * Creates the 'subtitles' table with fields for subtitle details.
+     * Creates the 'disks' table with fields for disk details.
      *
      * @return void
      */
     public function up(): void
     {
-        Schema::create('subtitles', function (Blueprint $table) {
-            $table->id()->comment('Primary key for the subtitle');
-            $table->foreignId('movie_id')
-                  ->nullable()
-                  ->constrained()
-                  ->onDelete('cascade')
-                  ->comment('Foreign key referencing the movies table, nullable if not for a movie');
-            $table->foreignId('episode_id')
-                  ->nullable()
-                  ->constrained()
-                  ->onDelete('cascade')
-                  ->comment('Foreign key referencing the episodes table, nullable if not for an episode');
-            $table->string('language')->comment('Language of the subtitle (e.g., English, Persian)');
-            $table->string('file_path')->nullable()->comment('Path to the subtitle file, if stored locally');
-            $table->timestamp('created_at')->nullable()->comment('Timestamp for when the subtitle was created');
-            $table->timestamp('updated_at')->nullable()->comment('Timestamp for when the subtitle was last updated');
+        Schema::create('disks', function (Blueprint $table) {
+            $table->id()->comment('Primary key for the disk');
+            $table->string('name')->comment('Name of the disk (e.g., HDD1, External Drive)');
+            $table->text('description')->nullable()->comment('Optional description of the disk (e.g., 1TB Seagate)');
+            $table->timestamp('created_at')->nullable()->comment('Timestamp for when the disk was created');
+            $table->timestamp('updated_at')->nullable()->comment('Timestamp for when the disk was last updated');
         });
     }
 
     /**
      * Reverse the migrations.
      *
-     * Drops the 'subtitles' table.
+     * Drops the 'disks' table.
      *
      * @return void
      */
     public function down(): void
     {
-        Schema::dropIfExists('subtitles');
+        Schema::dropIfExists('disks');
     }
 }
