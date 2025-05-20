@@ -1,33 +1,68 @@
 <?php
 
+/**
+ * Cinexio - A personal movie and series archive management system with social networking features.
+ *
+ * This file is part of the Cinexio project, a free software for managing and sharing movie archives.
+ *
+ * @package Cinexio
+ * @author Reza Bagheri <rezabagheri@gmail.com>
+ * @copyright 2025 Reza Bagheri
+ * @license MIT License
+ * @version 1.0.0
+ * @link https://github.com/rezabagheri/cinexio
+ */
+
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Str;
+use Laravel\Sanctum\HasApiTokens;
 
+/**
+ * Class User
+ *
+ * Represents a user in the Cinexio system with authentication and social features.
+ *
+ * @property int $id
+ * @property string $name
+ * @property string $username
+ * @property string $email
+ * @property \Illuminate\Support\Carbon|null $email_verified_at
+ * @property string $password
+ * @property string|null $bio
+ * @property string|null $avatar
+ * @property string|null $location
+ * @property \Illuminate\Support\Carbon|null $last_login_at
+ * @property string|null $remember_token
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ */
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var list<string>
+     * @var array
      */
     protected $fillable = [
         'name',
+        'username',
         'email',
         'password',
+        'bio',
+        'avatar',
+        'location',
+        'last_login_at',
     ];
 
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var list<string>
+     * @var array
      */
     protected $hidden = [
         'password',
@@ -35,26 +70,12 @@ class User extends Authenticatable
     ];
 
     /**
-     * Get the attributes that should be cast.
+     * The attributes that should be cast.
      *
-     * @return array<string, string>
+     * @var array
      */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
-
-    /**
-     * Get the user's initials
-     */
-    public function initials(): string
-    {
-        return Str::of($this->name)
-            ->explode(' ')
-            ->map(fn (string $name) => Str::of($name)->substr(0, 1))
-            ->implode('');
-    }
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'last_login_at' => 'datetime',
+    ];
 }
