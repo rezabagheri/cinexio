@@ -69,27 +69,27 @@ Cinexio is a free and open-source personal movie and series archive management s
 Below is a list of planned features and their current status:
 
 -   **Database Schema**:
-    [ ] Movies table and model (Completed)
-    [ ] Disks table and model (Completed)
-    [ ] Movie versions table and model (Completed)
-    [ ] Genres table and model (Completed)
-    [ ] Tags table and model (Completed)
-    [ ] Series, episodes, and related tables (Not started)
-    [ ] Users, wish lists, matches, and messages for social features (Not started)
+    -   [ ] Movies table and model (Completed)
+    -   [ ] Disks table and model (Completed)
+    -   [ ] Movie versions table and model (Completed)
+    -   [ ] Genres table and model (Completed)
+    -   [ ] Tags table and model (Completed)
+    -   [ ] Series, episodes, and related tables (Not started)
+    -   [ ] Users, wish lists, matches, and messages for social features (Not started)
 -   **Core Features**:
-    [ ] TMDb integration for movie import (Not started)
-    [ ] Real-time search and filtering (Not started)
-    [ ] Dashboard with stats and recent movies (Not started)
+    -   [ ] TMDb integration for movie import (Not started)
+    -   [ ] Real-time search and filtering (Not started)
+    -   [ ] Dashboard with stats and recent movies (Not started)
 -   **Social Networking**:
-    [ ] User connections and match suggestions (Not started)
-    [ ] Private messaging (Not started)
+    -   [ ] User connections and match suggestions (Not started)
+    -   [ ] Private messaging (Not started)
 -   **UI/UX**:
-    [ ] Responsive homepage with Livewire (Not started)
-    [ ] Detailed movie and disk views (Not started)
+    -   [ ] Responsive homepage with Livewire (Not started)
+    -   [ ] Detailed movie and disk views (Not started)
 -   **Documentation**:
-    [ ] Initial README with project overview (Completed)
-    [ ] API documentation (Not started)
-    [ ] Contribution guidelines (Not started)
+    -   [ ] Initial README with project overview (Completed)
+    -   [ ] API documentation (Not started)
+    -   [ ] Contribution guidelines (Not started)
 
 ## Contributing
 
