@@ -13,45 +13,43 @@
  * @link https://github.com/rezabagheri/cinexio
  */
 
-namespace App\Models;
-
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 /**
- * Class Disk
+ * Class AddCapacityAndFreeSpaceToDisksTable
  *
- * Represents a storage disk in the Cinexio system.
- *
- * @property int $id
- * @property string $name
- * @property string|null $description
- * @property int|null $capacity
- * @property int|null $free_space
- * @property \Illuminate\Support\Carbon|null $created_at
- * @property \Illuminate\Support\Carbon|null $updated_at
+ * Migration to add capacity and free_space columns to the 'disks' table.
  */
-class Disk extends Model
+class AddCapacityAndFreeSpaceToDisksTable extends Migration
 {
     /**
-     * The attributes that are mass assignable.
+     * Run the migrations.
      *
-     * @var array
+     * Adds capacity and free_space columns to track disk storage details.
+     *
+     * @return void
      */
-    protected $fillable = [
-        'name',
-        'description',
-        'capacity',
-        'free_space',
-    ];
+    public function up(): void
+    {
+        Schema::table('disks', function (Blueprint $table) {
+            $table->unsignedBigInteger('capacity')->nullable()->after('description')->comment('Total capacity of the disk in gigabytes');
+            $table->unsignedBigInteger('free_space')->nullable()->after('capacity')->comment('Available free space on the disk in gigabytes');
+        });
+    }
 
     /**
-     * Get the movie versions stored on this disk.
+     * Reverse the migrations.
      *
-     * @return HasMany
+     * Removes the capacity and free_space columns from the 'disks' table.
+     *
+     * @return void
      */
-    public function movieVersions(): HasMany
+    public function down(): void
     {
-        return $this->hasMany(MovieVersion::class);
+        Schema::table('disks', function (Blueprint $table) {
+            $table->dropColumn(['capacity', 'free_space']);
+        });
     }
 }

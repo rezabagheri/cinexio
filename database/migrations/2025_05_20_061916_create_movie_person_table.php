@@ -40,7 +40,7 @@ class CreateMoviePersonTable extends Migration
                   ->onDelete('cascade')
                   ->comment('Foreign key referencing the movies table');
             $table->foreignId('person_id')
-                  ->constrained()
+                  ->constrained('persons')
                   ->onDelete('cascade')
                   ->comment('Foreign key referencing the persons table');
             $table->string('role')->comment('Role of the person in the movie (e.g., Director, Actor)');

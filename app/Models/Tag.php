@@ -16,24 +16,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 /**
- * Class Series
+ * Class Tag
  *
- * Represents a series entity in the Cinexio system.
+ * Represents a custom tag for movies in the Cinexio system.
  *
  * @property int $id
- * @property string $title
- * @property string|null $original_title
- * @property int|null $start_year
- * @property int|null $end_year
+ * @property string $name
  * @property string|null $description
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  */
-class Series extends Model
+class Tag extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -41,30 +37,17 @@ class Series extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
-        'original_title',
-        'start_year',
-        'end_year',
+        'name',
         'description',
     ];
 
     /**
-     * Get the seasons associated with this series.
-     *
-     * @return HasMany
-     */
-    public function seasons(): HasMany
-    {
-        return $this->hasMany(Season::class);
-    }
-
-    /**
-     * Get the persons associated with this series.
+     * Get the movies associated with this tag.
      *
      * @return BelongsToMany
      */
-    public function persons(): BelongsToMany
+    public function movies(): BelongsToMany
     {
-        return $this->belongsToMany(Person::class, 'series_person')->withPivot('role');
+        return $this->belongsToMany(Movie::class, 'movie_tag');
     }
 }
