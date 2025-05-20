@@ -69,11 +69,11 @@ Cinexio is a free and open-source personal movie and series archive management s
 Below is a list of planned features and their current status:
 
 -   **Database Schema**:
-    -   [+] Movies table and model (Completed)
-    -   [+] Disks table and model (Completed)
-    -   [+] Movie versions table and model (Completed)
-    -   [+] Genres table and model (Completed)
-    -   [+] Tags table and model (Completed)
+    -   [x] Movies table and model (Completed)
+    -   [x] Disks table and model (Completed)
+    -   [x] Movie versions table and model (Completed)
+    -   [x] Genres table and model (Completed)
+    -   [x] Tags table and model (Completed)
     -   [ ] Series, episodes, and related tables (Not started)
     -   [ ] Users, wish lists, matches, and messages for social features (Not started)
 -   **Core Features**:
