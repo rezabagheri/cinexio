@@ -27,84 +27,72 @@ Cinexio is a free and open-source personal movie and series archive management s
 
 ## Installation
 
-1.  Clone the repository:
-
+1. Clone the repository:
     ```bash
     git clone https://github.com/rezabagheri/cinexio.git
-
     ```
-
-2.  Install dependencies:
-
+2. Install dependencies:
     ```bash
     composer install
     npm install
-
     ```
-
-3.  Copy `.env.example` to `.env` and configure your database and TMDb API key.
-4.  Run migrations:
-
+3. Copy `.env.example` to `.env` and configure your database and TMDb API key.
+4. Run migrations:
     ```bash
     php artisan migrate
-
     ```
-
-5.  Build assets:
-
+5. Build assets:
     ```bash
     npm run dev
-
     ```
-
-6.  Serve the application:
-
+6. Serve the application:
     ```bash
     php artisan serve
-
     ```
 
 ## TODO
 
 Below is a list of planned features and their current status:
 
--   **Database Schema**:
+-   [x] **Database Schema**:
     -   [x] Movies table and model (Completed)
     -   [x] Disks table and model (Completed)
     -   [x] Movie versions table and model (Completed)
     -   [x] Genres table and model (Completed)
     -   [x] Tags table and model (Completed)
-    -   [x] Series, episodes, and related tables (Completed)
+    -   [x] Series, seasons, and episodes tables and models (Completed)
+    -   [x] Persons table and model with pivot tables for movies and series (Completed)
+    -   [x] Subtitles and audio tables and models (Completed)
     -   [ ] Users, wish lists, matches, and messages for social features (Not started)
--   **Core Features**:
+-   [ ] **Core Features**:
     -   [ ] TMDb integration for movie import (Not started)
     -   [ ] Real-time search and filtering (Not started)
     -   [ ] Dashboard with stats and recent movies (Not started)
--   **Social Networking**:
+-   [ ] **Social Networking**:
     -   [ ] User connections and match suggestions (Not started)
     -   [ ] Private messaging (Not started)
--   **UI/UX**:
+-   [ ] **UI/UX**:
     -   [ ] Responsive homepage with Livewire (Not started)
     -   [ ] Detailed movie and disk views (Not started)
--   **Documentation**:
-    -   [ ] Initial README with project overview (Completed)
+-   [ ] **Documentation**:
+    -   [x] Initial README with project overview (Completed)
     -   [ ] API documentation (Not started)
     -   [ ] Contribution guidelines (Not started)
 
 ## Contributing
 
-Contributions are welcome! Please read the [CONTRIBUTING.md](https://grok.com/chat/CONTRIBUTING.md) (coming soon) for details on how to contribute to Cinexio.
+Contributions are welcome! Please read the [CONTRIBUTING.md](CONTRIBUTING.md) (coming soon) for details on how to contribute to Cinexio.
 
 ## License
 
-Cinexio is open-source software licensed under the [MIT License](https://grok.com/chat/LICENSE).
+Cinexio is open-source software licensed under the [MIT License](LICENSE).
 
 ## Contact
 
 -   Author: Reza Bagheri
--   Email: [rezabagheri@gmail.com](mailto:rezabagheri@gmail.com)
+-   Email: rezabagheri@gmail.com
 -   GitHub: [rezabagheri](https://github.com/rezabagheri)
 
 ---
 
-Built with ❤️ in Gyumri, Armenia.`enter code here`
+Built with ❤️ in Gyumri, Armenia.
