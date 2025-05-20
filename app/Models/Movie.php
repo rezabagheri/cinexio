@@ -65,4 +65,14 @@ class Movie extends Model
     {
         return $this->belongsToMany(Genre::class, 'movie_genre');
     }
+
+    /**
+     * Get the tags associated with this movie.
+     *
+     * @return BelongsToMany
+     */
+    public function tags(): BelongsToMany
+    {
+        return $this->belongsToMany(Tag::class, 'movie_tag');
+    }
 }
