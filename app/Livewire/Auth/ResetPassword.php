@@ -1,5 +1,18 @@
 <?php
 
+/**
+ * Cinexio - A personal movie and series archive management system with social networking features.
+ *
+ * This file is part of the Cinexio project, a free software for managing and sharing movie archives.
+ *
+ * @package Cinexio
+ * @author Reza Bagheri <rezabagheri@gmail.com>
+ * @copyright 2025 Reza Bagheri
+ * @license MIT License
+ * @version 1.0.0
+ * @link https://github.com/rezabagheri/cinexio
+ */
+
 namespace App\Livewire\Auth;
 
 use Illuminate\Auth\Events\PasswordReset;
@@ -8,11 +21,9 @@ use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules;
-use Livewire\Attributes\Layout;
 use Livewire\Attributes\Locked;
 use Livewire\Component;
 
-#[Layout('components.layouts.auth')]
 class ResetPassword extends Component
 {
     #[Locked]
@@ -26,16 +37,20 @@ class ResetPassword extends Component
 
     /**
      * Mount the component.
+     *
+     * @param string $token
+     * @return void
      */
     public function mount(string $token): void
     {
         $this->token = $token;
-
         $this->email = request()->string('email');
     }
 
     /**
      * Reset the password for the given user.
+     *
+     * @return void
      */
     public function resetPassword(): void
     {
@@ -45,9 +60,6 @@ class ResetPassword extends Component
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        // Here we will attempt to reset the user's password. If it is successful we
-        // will update the password on an actual user model and persist it to the
-        // database. Otherwise we will parse the error and return the response.
         $status = Password::reset(
             $this->only('email', 'password', 'password_confirmation', 'token'),
             function ($user) {
@@ -60,17 +72,23 @@ class ResetPassword extends Component
             }
         );
 
-        // If the password was successfully reset, we will redirect the user back to
-        // the application's home authenticated view. If there is an error we can
-        // redirect them back to where they came from with their error message.
-        if ($status != Password::PasswordReset) {
+        if ($status !== Password::PASSWORD_RESET) {
             $this->addError('email', __($status));
-
             return;
         }
 
         Session::flash('status', __($status));
-
         $this->redirectRoute('login', navigate: true);
+    }
+
+    /**
+     * Render the component's view.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function render()
+    {
+        return view('livewire.auth.reset-password')
+            ->layout('layouts.app');
     }
 }
