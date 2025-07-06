@@ -63,7 +63,9 @@ Below is a list of planned features and their current status:
     -   [x] Series, seasons, and episodes tables and models (Completed)
     -   [x] Persons table and model with pivot tables for movies and series (Completed)
     -   [x] Subtitles and audio tables and models (Completed)
-    -   [ ] Users, wish lists, matches, and messages for social features (Not started)
+    -   [x] Users table with additional fields for social features (Completed)
+    -   [x] Wishlists table and model (Completed)
+    -   [ ] Matches and messages for social features (Not started)
 -   [ ] **Core Features**:
     -   [ ] TMDb integration for movie import (Not started)
     -   [ ] Real-time search and filtering (Not started)
