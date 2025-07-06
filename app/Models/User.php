@@ -78,4 +78,31 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'last_login_at' => 'datetime',
     ];
+
+    /**
+     * Get the user's initials from their name.
+     *
+     * @return string
+     */
+    public function initials(): string
+    {
+        $name = trim($this->name);
+        if (empty($name)) {
+            return '';
+        }
+
+        $words = explode(' ', $name);
+        $initials = '';
+
+        foreach ($words as $word) {
+            if (!empty($word)) {
+                $initials .= strtoupper($word[0]);
+                if (strlen($initials) >= 2) {
+                    break;
+                }
+            }
+        }
+
+        return $initials;
+    }
 }
