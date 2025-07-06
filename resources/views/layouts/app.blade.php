@@ -10,6 +10,7 @@
 <body class="font-sans antialiased bg-gray-100">
     <div class="flex min-h-screen">
         <!-- Sidebar -->
+        @auth
         <aside class="w-64 bg-white shadow-md dark:bg-zinc-800 dark:border-r dark:border-zinc-700">
             <div class="p-4">
                 <a href="{{ route('dashboard') }}" class="flex items-center space-x-2">
@@ -57,6 +58,7 @@
                 </form>
             </div>
         </aside>
+        @endauth
 
         <!-- Main Content -->
         <div class="flex-1">
