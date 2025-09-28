@@ -40,6 +40,67 @@
         </SwiperSlide>
       </Swiper>
     </section>
+    <!-- Most Popular Movies Slider -->
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        <span class="inline-block w-2 h-6 bg-yellow-400 rounded-sm"></span>
+        محبوب‌ترین فیلم‌ها
+      </h2>
+      <Swiper
+        :modules="swiperModules"
+        :slides-per-view="2"
+        :space-between="10"
+        :breakpoints="popularBreakpoints"
+        navigation
+        pagination
+        class="movie-swiper bg-gradient-to-r from-yellow-100/10 via-yellow-400/10 to-yellow-100/10 rounded-xl py-4"
+      >
+        <SwiperSlide v-for="movie in popularMovies" :key="movie.id">
+          <div class="movie-card group relative w-full sm:w-52 flex-shrink-0 rounded-xl overflow-hidden bg-yellow-900/80 shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:shadow-yellow-400/40">
+            <div class="w-full h-56 flex items-center justify-center bg-yellow-700/60 overflow-hidden">
+              <img v-if="movie.poster" :src="movie.poster" :alt="movie.title" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" />
+              <span v-else>Poster</span>
+            </div>
+            <div class="p-3">
+              <div class="text-base font-bold mb-1 truncate">{{ movie.title }}</div>
+              <div class="text-xs text-yellow-200 mb-1">{{ movie.year }}</div>
+              <div class="text-xs text-yellow-400 font-bold">★ {{ movie.rating }}</div>
+            </div>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+    </section>
+    <!-- Latest Series Slider -->
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        <span class="inline-block w-2 h-6 bg-emerald-400 rounded-sm"></span>
+        جدیدترین سریال‌ها
+      </h2>
+      <Swiper
+        :modules="swiperModules"
+        :slides-per-view="1"
+        :space-between="12"
+        :breakpoints="swiperBreakpoints"
+        navigation
+        pagination
+        class="movie-swiper bg-gradient-to-r from-emerald-900/80 via-emerald-800/80 to-emerald-900/80 rounded-xl py-4"
+      >
+        <SwiperSlide v-for="series in seriesList" :key="series.id">
+          <div class="movie-card group relative w-full sm:w-56 flex-shrink-0 rounded-xl overflow-hidden bg-gray-900 shadow-lg transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl">
+            <div class="w-full h-64 sm:h-80 flex items-center justify-center bg-gray-700 overflow-hidden">
+              <img v-if="series.poster" :src="series.poster" :alt="series.title" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" />
+              <span v-else>Poster</span>
+            </div>
+            <div class="p-4">
+              <div class="text-lg font-bold mb-1 truncate">{{ series.title }}</div>
+              <div class="text-sm text-gray-300 mb-2">{{ series.year }}</div>
+              <div class="text-xs text-yellow-400">★ {{ series.rating }}</div>
+              <div class="text-xs mt-2 line-clamp-2">{{ series.summary }}</div>
+            </div>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+    </section>
     <!-- ...existing code... -->
   </DefaultLayout>
 
@@ -258,34 +319,4 @@ onMounted(async () => {
 <style scoped>
 @import 'swiper/css';
 @import 'swiper/css/navigation';
-@import 'swiper/css/pagination';
-
-.welcome-page {
-  background: linear-gradient(180deg, #181818 0%, #111 100%);
-}
-.movie-swiper {
-  padding-bottom: 2.5rem;
-}
-
-.movie-card {
-  min-width: 0;
-  max-width: 20rem;
-  min-height: 18rem;
-  box-shadow: 0 4px 24px 0 #000a;
-  transition: box-shadow 0.3s, transform 0.3s;
-}
-
-.line-clamp-2 {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-
-@media (max-width: 640px) {
-  .movie-card {
-    max-width: 100%;
-    min-width: 0;
-  }
-}
 </style>
