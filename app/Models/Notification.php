@@ -22,7 +22,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int $user_id
  * @property string $type
- * @property string $data
+ * @property string $message
+ * @property bool $is_read
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  *
@@ -38,7 +39,8 @@ class Notification extends Model
     protected $fillable = [
         'user_id',
         'type',
-        'data',
+        'message',
+        'is_read',
     ];
 
     /**

@@ -43,6 +43,25 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Series extends Model
 {
     /**
+     * The genres associated with the series.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function genres()
+    {
+        return $this->belongsToMany(\App\Models\Genre::class, 'series_genre');
+    }
+
+    /**
+     * The tags associated with the series.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function tags()
+    {
+        return $this->belongsToMany(\App\Models\Tag::class, 'series_tag');
+    }
+    /**
      * Get the seasons for the series.
      *
      * @return HasMany
@@ -61,4 +80,20 @@ class Series extends Model
     {
         return $this->belongsToMany(Person::class, 'series_person')->withPivot('role')->withTimestamps();
     }
+
+    /**
+     * Genres as JSON or pivot (if using pivot, define relation)
+     */
+    // public function genres(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(Genre::class, 'series_genre');
+    // }
+
+    /**
+     * Tags as JSON or pivot (if using pivot, define relation)
+     */
+    // public function tags(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(Tag::class, 'series_tag');
+    // }
 }

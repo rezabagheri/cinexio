@@ -19,5 +19,30 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        // Call other seeders here
+        $this->call([
+            UserSeeder::class,
+            DiskSeeder::class,
+            GenreSeeder::class,
+            TagSeeder::class,
+            PersonSeeder::class,
+            MovieSeeder::class,
+            SeriesSeeder::class,
+            ReviewSeeder::class,
+            RatingSeeder::class,
+            CommentSeeder::class,
+            WatchlistSeeder::class,
+            FavoriteSeeder::class,
+            PlaylistSeeder::class,
+            NotificationSeeder::class,
+            UserSettingSeeder::class,
+            ActivityLogSeeder::class,
+            SocialConnectionSeeder::class,
+            FriendRequestSeeder::class,
+            SharedLinkSeeder::class,
+            PaymentTransactionSeeder::class,
+            ApiTokenSeeder::class,
+        ]);
     }
 }

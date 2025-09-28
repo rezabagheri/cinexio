@@ -23,6 +23,8 @@
                  $table->string('payment_method')->comment('Payment method, e.g., credit_card, paypal');
                  $table->string('transaction_id')->unique()->comment('Unique transaction ID from payment gateway');
                  $table->enum('status', ['pending', 'completed', 'failed'])->default('pending')->comment('Status of the transaction');
+                 $table->string('description')->nullable()->comment('Optional description for the transaction');
+                 $table->json('gateway_response')->nullable()->comment('Raw response from payment gateway');
                  $table->timestamps();
              });
          }

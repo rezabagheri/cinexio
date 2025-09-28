@@ -33,13 +33,19 @@
           */
          public function up(): void
          {
-             Schema::create('seasons', function (Blueprint $table) {
-                 $table->id()->comment('Primary key for the season');
-                 $table->foreignId('series_id')->constrained()->onDelete('cascade')->comment('Foreign key referencing the series table');
-                 $table->integer('season_number')->comment('The season number, e.g., 1, 2');
-                 $table->text('description')->nullable()->comment('A brief description of the season');
-                 $table->timestamps();
-             });
+            Schema::create('seasons', function (Blueprint $table) {
+                $table->id()->comment('Primary key for the season');
+                $table->foreignId('series_id')->constrained()->onDelete('cascade')->comment('Foreign key referencing the series table');
+                $table->unsignedInteger('season_number')->comment('The season number, e.g., 1, 2');
+                $table->string('title')->nullable()->comment('Title of the season');
+                $table->text('description')->nullable()->comment('A brief description of the season');
+                $table->date('start_date')->nullable()->comment('Start date of the season');
+                $table->date('end_date')->nullable()->comment('End date of the season');
+                $table->string('poster_url')->nullable()->comment('Poster for the season');
+                $table->unsignedInteger('episodes_count')->default(0)->comment('Number of episodes in this season');
+                $table->timestamps();
+                $table->unique(['series_id', 'season_number']);
+            });
          }
 
          /**

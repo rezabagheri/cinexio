@@ -33,23 +33,27 @@
           */
          public function up(): void
          {
-             Schema::create('series', function (Blueprint $table) {
-                 $table->id()->comment('Primary key for the series');
-                 $table->string('title')->comment('The title of the series');
-                 $table->string('original_title')->nullable()->comment('The original title of the series, if different');
-                 $table->text('description')->nullable()->comment('A brief description or synopsis of the series');
-                 $table->integer('start_year')->nullable()->comment('The year the series started');
-                 $table->integer('end_year')->nullable()->comment('The year the series ended, if applicable');
-                 $table->decimal('rating', 3, 1)->nullable()->comment('Rating out of 10');
-                 $table->string('age_rating')->nullable()->comment('Age rating, e.g., TV-14');
-                 $table->json('countries')->nullable()->comment('Countries of production');
-                 $table->string('original_language')->nullable()->comment('Original language');
-                 $table->string('imdb_id')->unique()->nullable()->comment('IMDb ID for external reference');
-                 $table->string('tmdb_id')->unique()->nullable()->comment('TMDB ID for external reference');
-                 $table->string('poster_url')->nullable()->comment('URL to the series poster image');
-                 $table->timestamps();
-                 $table->index(['title', 'start_year']);
-             });
+            Schema::create('series', function (Blueprint $table) {
+                $table->id()->comment('Primary key for the series');
+                $table->string('title')->comment('The title of the series');
+                $table->string('original_title')->nullable()->comment('The original title of the series, if different');
+                $table->text('description')->nullable()->comment('A brief description or synopsis of the series');
+                $table->integer('start_year')->nullable()->comment('The year the series started');
+                $table->integer('end_year')->nullable()->comment('The year the series ended, if applicable');
+                $table->decimal('rating', 3, 1)->nullable()->comment('Rating out of 10');
+                $table->string('age_rating')->nullable()->comment('Age rating, e.g., TV-14');
+                $table->json('countries')->nullable()->comment('Countries of production');
+                $table->string('original_language')->nullable()->comment('Original language');
+                $table->string('imdb_id')->unique()->nullable()->comment('IMDb ID for external reference');
+                $table->string('tmdb_id')->unique()->nullable()->comment('TMDB ID for external reference');
+                $table->string('poster_url')->nullable()->comment('URL to the series poster image');
+                $table->string('status')->nullable()->comment('Ongoing, Ended, Canceled, etc.');
+                $table->unsignedInteger('seasons_count')->default(0)->comment('Number of seasons');
+                $table->json('genres')->nullable()->comment('Genres as array or use pivot');
+                $table->json('tags')->nullable()->comment('Tags as array or use pivot');
+                $table->timestamps();
+                $table->index(['title', 'start_year']);
+            });
          }
 
          /**

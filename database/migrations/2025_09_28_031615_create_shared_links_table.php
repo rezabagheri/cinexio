@@ -20,6 +20,9 @@
                  $table->foreignId('user_id')->constrained()->onDelete('cascade')->comment('Foreign key referencing the users table');
                  $table->foreignId('movie_id')->constrained()->onDelete('cascade')->comment('Foreign key referencing the movies table');
                  $table->string('token')->unique()->comment('Unique token for the shared link');
+                 $table->enum('type', ['view', 'download', 'edit'])->default('view')->comment('Type of shared link access');
+                 $table->unsignedInteger('usage_count')->default(0)->comment('Number of times the link has been used');
+                 $table->string('message')->nullable()->comment('Optional message with the shared link');
                  $table->timestamp('expires_at')->nullable()->comment('Expiration time of the link');
                  $table->boolean('is_active')->default(true)->comment('Whether the link is active');
                  $table->timestamps();

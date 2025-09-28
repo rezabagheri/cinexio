@@ -33,6 +33,29 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class UserSetting extends Model
 {
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'user_id',
+        'language',
+        'notifications_enabled',
+        'theme',
+        'settings',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'notifications_enabled' => 'boolean',
+        'settings' => 'array',
+    ];
+
+    /**
      * Get the user who owns these settings.
      *
      * @return BelongsTo

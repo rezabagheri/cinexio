@@ -40,7 +40,7 @@ class MovieVersion extends Model
     protected $fillable = [
         'movie_id',
         'disk_id',
-        'version',
+        'version_name',
         'quality',
     ];
 

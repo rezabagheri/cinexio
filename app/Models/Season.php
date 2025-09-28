@@ -38,8 +38,13 @@ class Season extends Model
      */
     protected $fillable = [
         'series_id',
+        'season_number',
         'title',
-        'number',
+        'description',
+        'start_date',
+        'end_date',
+        'poster_url',
+        'episodes_count',
     ];
 
     /**

@@ -39,7 +39,8 @@ class Rating extends Model
     protected $fillable = [
         'user_id',
         'movie_id',
-        'score',
+        'value',
+        'status',
     ];
 
     /**

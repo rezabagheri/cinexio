@@ -12,7 +12,9 @@
  * @link https://github.com/rezabagheri/cinexio
  */
 
+
 namespace App\Models;
+use App\Enums\PaymentTransactionStatus;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -40,7 +42,17 @@ class PaymentTransaction extends Model
         'user_id',
         'transaction_id',
         'amount',
+        'currency',
+        'payment_method',
         'status',
+        'description',
+        'gateway_response',
+    ];
+
+    protected $casts = [
+        'amount' => 'float',
+        'status' => PaymentTransactionStatus::class,
+        'gateway_response' => 'array',
     ];
 
     /**

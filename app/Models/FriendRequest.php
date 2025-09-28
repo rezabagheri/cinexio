@@ -12,7 +12,9 @@
  * @link https://github.com/rezabagheri/cinexio
  */
 
+
 namespace App\Models;
+use App\Enums\FriendRequestStatus;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -40,6 +42,11 @@ class FriendRequest extends Model
         'sender_id',
         'receiver_id',
         'status',
+        'message',
+    ];
+
+    protected $casts = [
+        'status' => FriendRequestStatus::class,
     ];
 
     /**

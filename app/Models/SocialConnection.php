@@ -13,7 +13,9 @@
  * @link       https://github.com/rezabagheri/cinexio
  */
 
+
 namespace App\Models;
+use App\Enums\SocialConnectionStatus;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -26,12 +28,33 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $id Primary key
  * @property int $user_id Foreign key referencing the user
  * @property int $friend_id Foreign key referencing the friend (user)
- * @property bool $accepted Whether the connection is accepted
+ * @property string $status Friendship status (pending, accepted, rejected, blocked)
  * @property-read User $user The user who initiated the connection
  * @property-read User $friend The friend user
  */
 class SocialConnection extends Model
 {
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'user_id',
+        'friend_id',
+        'status',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'status' => SocialConnectionStatus::class,
+    ];
+
     /**
      * Get the user who initiated the connection.
      *

@@ -34,6 +34,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Watchlist extends Model
 {
     /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'watchlist';
+    /**
      * Get the user who owns this watchlist item.
      *
      * @return BelongsTo

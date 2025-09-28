@@ -17,10 +17,11 @@
          {
              Schema::create('user_settings', function (Blueprint $table) {
                  $table->id()->comment('Primary key for the user setting');
-                 $table->foreignId('user_id')->constrained()->onDelete('cascade')->comment('Foreign key referencing the users table');
+                 $table->foreignId('user_id')->unique()->constrained()->onDelete('cascade')->comment('Foreign key referencing the users table, unique per user');
                  $table->string('language')->nullable()->comment('Preferred language, e.g., en, fa');
                  $table->boolean('notifications_enabled')->default(true)->comment('Whether notifications are enabled');
                  $table->string('theme')->nullable()->comment('Preferred theme, e.g., light, dark');
+                 $table->json('settings')->nullable()->comment('Flexible JSON for additional user preferences');
                  $table->timestamps();
              });
          }

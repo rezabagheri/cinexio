@@ -19,8 +19,10 @@
                  $table->id()->comment('Primary key for the activity log');
                  $table->foreignId('user_id')->constrained()->onDelete('cascade')->comment('Foreign key referencing the users table');
                  $table->string('action')->comment('Type of action, e.g., watched, added_to_favorites');
-                 $table->morphs('subject'); // برای رابطه polymorphic با movies, playlists, etc.
-                 $table->timestamp('created_at')->comment('Time of the activity');
+                 $table->string('subject_type')->nullable()->comment('Polymorphic type: Movie, Playlist, etc.');
+                 $table->unsignedBigInteger('subject_id')->nullable()->comment('Polymorphic id');
+                 $table->text('description')->nullable()->comment('Optional description of the activity');
+                 $table->timestamps();
              });
          }
 

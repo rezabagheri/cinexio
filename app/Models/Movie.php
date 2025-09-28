@@ -21,11 +21,27 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property string $title
+ * @property string|null $original_title
  * @property string|null $description
  * @property int|null $year
+ * @property string|null $release_date
+ * @property int|null $runtime
+ * @property string|null $imdb_id
+ * @property string|null $tmdb_id
+ * @property string|null $poster_url
+ * @property string|null $backdrop_url
+ * @property string|null $trailer_url
+ * @property string|null $language
+ * @property array|null $countries
+ * @property string|null $age_rating
+ * @property int|null $budget
+ * @property int|null $revenue
+ * @property float|null $rating
+ * @property int|null $votes
+ * @property string|null $status
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- *
+
  * @property-read \Illuminate\Database\Eloquent\Collection|Genre[] $genres
  * @property-read \Illuminate\Database\Eloquent\Collection|Review[] $reviews
  * @property-read \Illuminate\Database\Eloquent\Collection|Rating[] $ratings
@@ -45,8 +61,24 @@ class Movie extends Model
      */
     protected $fillable = [
         'title',
+        'original_title',
         'description',
         'year',
+        'release_date',
+        'runtime',
+        'imdb_id',
+        'tmdb_id',
+        'poster_url',
+        'backdrop_url',
+        'trailer_url',
+        'original_language',
+        'countries',
+        'age_rating',
+        'budget',
+        'revenue',
+        'rating',
+        'votes',
+        'status',
     ];
 
     /**
@@ -56,7 +88,7 @@ class Movie extends Model
      */
     public function genres()
     {
-        return $this->belongsToMany(Genre::class, 'movie_genres');
+    return $this->belongsToMany(Genre::class, 'movie_genre');
     }
 
     /**
@@ -106,7 +138,7 @@ class Movie extends Model
      */
     public function playlists()
     {
-        return $this->belongsToMany(Playlist::class, 'playlist_movies');
+    return $this->belongsToMany(Playlist::class, 'playlist_movie');
     }
 
     /**
@@ -116,7 +148,7 @@ class Movie extends Model
      */
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'movie_tags');
+    return $this->belongsToMany(Tag::class, 'movie_tag');
     }
 
     /**
@@ -136,6 +168,6 @@ class Movie extends Model
      */
     public function people()
     {
-        return $this->belongsToMany(Person::class, 'movie_people');
+    return $this->belongsToMany(Person::class, 'movie_person');
     }
 }

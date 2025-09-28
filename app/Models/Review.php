@@ -39,8 +39,26 @@ class Review extends Model
     protected $fillable = [
         'user_id',
         'movie_id',
-        'body',
+        'content',
+        'rating',
+        'status',
+        'parent_id',
     ];
+    /**
+     * Parent review (for replies)
+     */
+    public function parent()
+    {
+        return $this->belongsTo(self::class, 'parent_id');
+    }
+
+    /**
+     * Replies to this review
+     */
+    public function replies()
+    {
+        return $this->hasMany(self::class, 'parent_id');
+    }
 
     /**
      * Get the user that wrote the review.

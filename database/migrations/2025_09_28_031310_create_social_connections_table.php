@@ -19,8 +19,9 @@
                  $table->id()->comment('Primary key for the social connection');
                  $table->foreignId('user_id')->constrained()->onDelete('cascade')->comment('Foreign key referencing the users table');
                  $table->foreignId('friend_id')->constrained('users')->onDelete('cascade')->comment('Foreign key referencing the friend\'s user table');
-                 $table->boolean('accepted')->default(false)->comment('Whether the connection is accepted');
+                 $table->enum('status', ['pending', 'accepted', 'rejected', 'blocked'])->default('pending')->comment('Friendship status');
                  $table->timestamps();
+                 $table->unique(['user_id', 'friend_id']);
              });
          }
 

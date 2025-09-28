@@ -59,6 +59,6 @@ class Playlist extends Model
      */
     public function movies()
     {
-        return $this->belongsToMany(Movie::class, 'playlist_movies');
+    return $this->belongsToMany(Movie::class, 'playlist_movie');
     }
 }

@@ -33,15 +33,21 @@
           */
          public function up(): void
          {
-             Schema::create('episodes', function (Blueprint $table) {
-                 $table->id()->comment('Primary key for the episode');
-                 $table->foreignId('season_id')->constrained()->onDelete('cascade')->comment('Foreign key referencing the seasons table');
-                 $table->integer('episode_number')->comment('The episode number, e.g., 1, 2');
-                 $table->string('title')->nullable()->comment('The title of the episode');
-                 $table->integer('duration')->nullable()->comment('Duration of the episode in minutes');
-                 $table->foreignId('disk_id')->nullable()->constrained()->onDelete('set null')->comment('Foreign key referencing the disks table, nullable if not stored on a disk');
-                 $table->timestamps();
-             });
+            Schema::create('episodes', function (Blueprint $table) {
+                $table->id()->comment('Primary key for the episode');
+                $table->foreignId('season_id')->constrained()->onDelete('cascade')->comment('Foreign key referencing the seasons table');
+                $table->unsignedInteger('episode_number')->comment('The episode number, e.g., 1, 2');
+                $table->string('title')->nullable()->comment('The title of the episode');
+                $table->text('summary')->nullable()->comment('Short summary of the episode');
+                $table->date('air_date')->nullable()->comment('Air date of the episode');
+                $table->integer('duration')->nullable()->comment('Duration of the episode in minutes');
+                $table->string('video_url')->nullable()->comment('URL or path to the episode video');
+                $table->foreignId('disk_id')->nullable()->constrained()->onDelete('set null')->comment('Foreign key referencing the disks table, nullable if not stored on a disk');
+                $table->json('subtitles')->nullable()->comment('List of subtitle files');
+                $table->string('quality')->nullable()->comment('Quality of the episode');
+                $table->timestamps();
+                $table->unique(['season_id', 'episode_number']);
+            });
          }
 
          /**

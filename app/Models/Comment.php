@@ -21,7 +21,8 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property int $user_id
- * @property string $body
+ * @property int $movie_id
+ * @property string $content
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  *
@@ -36,7 +37,8 @@ class Comment extends Model
      */
     protected $fillable = [
         'user_id',
-        'body',
+        'movie_id',
+        'content',
     ];
 
     /**
@@ -47,5 +49,15 @@ class Comment extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Get the movie that this comment belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function movie()
+    {
+        return $this->belongsTo(Movie::class);
     }
 }

@@ -15,14 +15,18 @@
           */
          public function up(): void
          {
-             Schema::create('reviews', function (Blueprint $table) {
-                 $table->id()->comment('Primary key for the review');
-                 $table->foreignId('movie_id')->constrained()->onDelete('cascade')->comment('Foreign key referencing the movies table');
-                 $table->foreignId('user_id')->constrained()->onDelete('cascade')->comment('Foreign key referencing the users table');
-                 $table->text('content')->comment('Review text written by the user');
-                 $table->decimal('rating', 3, 1)->nullable()->comment('User rating out of 10');
-                 $table->timestamps();
-             });
+            Schema::create('reviews', function (Blueprint $table) {
+                $table->id()->comment('Primary key for the review');
+                $table->foreignId('movie_id')->constrained()->onDelete('cascade')->comment('Foreign key referencing the movies table');
+                $table->foreignId('user_id')->constrained()->onDelete('cascade')->comment('Foreign key referencing the users table');
+                $table->text('content')->comment('Review text written by the user');
+                $table->decimal('rating', 3, 1)->nullable()->comment('User rating out of 10');
+                $table->enum('status', ['pending', 'approved', 'rejected'])->default('approved')->comment('Review status for moderation');
+                $table->unsignedBigInteger('parent_id')->nullable()->comment('Parent review for replies');
+                $table->timestamps();
+                $table->unique(['movie_id', 'user_id']);
+                $table->foreign('parent_id')->references('id')->on('reviews')->onDelete('cascade');
+            });
          }
 
          /**

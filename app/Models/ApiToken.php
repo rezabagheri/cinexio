@@ -40,6 +40,18 @@ class ApiToken extends Model
         'user_id',
         'token',
         'name',
+        'type',
+        'scopes',
+        'message',
+        'allowed_ips',
+        'expires_at',
+        'revoked',
+    ];
+
+    protected $casts = [
+        'scopes' => 'array',
+        'revoked' => 'boolean',
+        'expires_at' => 'datetime',
     ];
 
     /**

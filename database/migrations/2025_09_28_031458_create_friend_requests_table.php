@@ -20,7 +20,9 @@
                  $table->foreignId('sender_id')->constrained('users')->onDelete('cascade')->comment('Foreign key referencing the sender\'s user table');
                  $table->foreignId('receiver_id')->constrained('users')->onDelete('cascade')->comment('Foreign key referencing the receiver\'s user table');
                  $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending')->comment('Status of the friend request');
+                 $table->string('message')->nullable()->comment('Optional message with the friend request');
                  $table->timestamps();
+                 $table->unique(['sender_id', 'receiver_id']);
              });
          }
 

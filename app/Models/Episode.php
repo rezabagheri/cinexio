@@ -39,9 +39,15 @@ class Episode extends Model
      */
     protected $fillable = [
         'season_id',
-        'disk_id',
+        'episode_number',
         'title',
-        'number',
+        'summary',
+        'air_date',
+        'duration',
+        'video_url',
+        'disk_id',
+        'subtitles',
+        'quality',
     ];
 
     /**
