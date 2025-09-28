@@ -13,7 +13,7 @@
     <section class="mb-10">
       <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
         <span class="inline-block w-2 h-6 bg-blue-500 rounded-sm"></span>
-        جدیدترین فیلم‌ها
+        {{ $t('latestMovies') }}
       </h2>
       <Swiper
         :modules="swiperModules"
@@ -44,7 +44,7 @@
     <section class="mb-10">
       <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
         <span class="inline-block w-2 h-6 bg-yellow-400 rounded-sm"></span>
-        محبوب‌ترین فیلم‌ها
+        {{ $t('mostPopularMovies') }}
       </h2>
       <Swiper
         :modules="swiperModules"
@@ -74,7 +74,7 @@
     <section class="mb-10">
       <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
         <span class="inline-block w-2 h-6 bg-emerald-400 rounded-sm"></span>
-        جدیدترین سریال‌ها
+        {{ $t('latestSeries') }}
       </h2>
       <Swiper
         :modules="swiperModules"
