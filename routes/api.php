@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('v1')->group(function () {
+    Route::get('movies/latest', [App\Http\Controllers\Api\V1\MovieController::class, 'latest']);
+    Route::get('movies/popular', [App\Http\Controllers\Api\V1\MovieController::class, 'popular']);
     Route::apiResource('movies', App\Http\Controllers\Api\V1\MovieController::class);
     Route::apiResource('series', App\Http\Controllers\Api\V1\SeriesController::class);
     Route::apiResource('people', App\Http\Controllers\Api\V1\PersonController::class);

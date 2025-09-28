@@ -9,6 +9,23 @@ use Illuminate\Http\Request;
 class MovieController extends Controller
 {
     /**
+     * Return the latest movies (10 newest by created_at)
+     */
+    public function latest()
+    {
+        $movies = Movie::orderByDesc('created_at')->take(10)->get(['id', 'title', 'year', 'rating', 'summary', 'poster']);
+        return response()->json($movies);
+    }
+
+    /**
+     * Return the most popular movies (10 highest rating)
+     */
+    public function popular()
+    {
+        $movies = Movie::orderByDesc('rating')->take(10)->get(['id', 'title', 'year', 'rating', 'summary', 'poster']);
+        return response()->json($movies);
+    }
+    /**
      * Display a listing of the resource.
      */
     public function index()
