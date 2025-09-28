@@ -99,6 +99,34 @@ Located in [`routes/`](routes/):
 
 ---
 
+-## Frontend & UX
+
+### Internationalization (i18n) & Language Switching
+- Uses [vue-i18n](https://kazupon.github.io/vue-i18n/) for all UI text and error messages.
+- Language switcher is always visible (top-right), persists locale across navigation and reloads.
+- Locale is stored in localStorage and synced with `<html lang>` and document direction.
+- All navigation, forms, and error messages are fully i18n-ready (English & Persian).
+
+### Netflix-Style Login/Register
+- Login and register pages use a modern, Netflix-inspired design with Inertia.js forms.
+- Robust error handling: server and client-side errors are shown in the current language.
+- Language switcher is available on all auth pages.
+- Accessibility: proper labels, focus management, and ARIA attributes.
+
+### Persian Font, RTL, and Alignment
+- Global Persian font (Vazirmatn) loaded from Google Fonts and enforced for all `lang='fa'` pages.
+- For Persian (`fa`):
+	- `direction: rtl` and `text-align: right` are applied globally.
+	- All UI elements, forms, and layouts adapt to RTL and right alignment.
+- `.font-sans` is overridden to use Vazirmatn for Persian.
+
+### Accessibility & UX
+- `<html lang>` and `dir` attributes are always in sync with the current locale.
+- All forms and navigation are keyboard accessible.
+- Color contrast and font sizes are chosen for readability in both languages.
+
+---
+
 ## Useful Tips
 - All models and seeders are documented with PHPDoc blocks for clarity.
 - Relationships are defined using Eloquent's relationship methods (see each model).
