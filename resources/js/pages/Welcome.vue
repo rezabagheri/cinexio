@@ -1,19 +1,48 @@
 <template>
-  <div :dir="direction" class="welcome-page min-h-screen bg-black text-white">
-    <header class="flex items-center justify-between px-6 py-4 bg-gradient-to-b from-black/80 to-transparent">
-      <div class="flex items-center gap-4">
-        <span class="text-2xl font-bold tracking-wide">Cinexio</span>
-      </div>
-      <nav class="flex items-center gap-6">
-        <button class="hover:text-primary transition">{{ $t('login') }}</button>
-        <button class="hover:text-primary transition">{{ $t('register') }}</button>
-        <select v-model="locale" class="bg-gray-800 text-white rounded px-2 py-1 ml-4">
-          <option value="fa">FA</option>
-          <option value="en">EN</option>
-        </select>
-      </nav>
-    </header>
-    <main class="pt-8 pb-16 px-2 sm:px-4">
+  <DefaultLayout>
+    <template #nav>
+      <button class="hover:text-primary transition">{{ $t('login') }}</button>
+      <button class="hover:text-primary transition">{{ $t('register') }}</button>
+      <select v-model="locale" class="bg-gray-800 text-white rounded px-2 py-1 ml-4">
+        <option value="fa">FA</option>
+        <option value="en">EN</option>
+      </select>
+    </template>
+    <!-- Welcome page content -->
+    <!-- Latest Movies Slider -->
+    <section class="mb-10">
+      <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+        <span class="inline-block w-2 h-6 bg-blue-500 rounded-sm"></span>
+        جدیدترین فیلم‌ها
+      </h2>
+      <Swiper
+        :modules="swiperModules"
+        :slides-per-view="1"
+        :space-between="12"
+        :breakpoints="swiperBreakpoints"
+        navigation
+        pagination
+        class="movie-swiper bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-xl py-4"
+      >
+        <SwiperSlide v-for="movie in latestMovies" :key="movie.id">
+          <div class="movie-card group relative w-full sm:w-72 flex-shrink-0 rounded-2xl overflow-hidden bg-gray-900 shadow-2xl transition-transform duration-300 hover:-translate-y-2 hover:shadow-blue-700/40">
+            <div class="w-full h-80 flex items-center justify-center bg-gray-700 overflow-hidden">
+              <img v-if="movie.poster" :src="movie.poster" :alt="movie.title" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300" />
+              <span v-else>Poster</span>
+            </div>
+            <div class="p-5">
+              <div class="text-xl font-bold mb-1 truncate">{{ movie.title }}</div>
+              <div class="text-sm text-gray-300 mb-2">{{ movie.year }}</div>
+              <div class="text-xs text-blue-400 font-bold">★ {{ movie.rating }}</div>
+              <div class="text-xs mt-2 line-clamp-2">{{ movie.summary }}</div>
+            </div>
+          </div>
+        </SwiperSlide>
+      </Swiper>
+    </section>
+    <!-- ...existing code... -->
+  </DefaultLayout>
+</template>
       <!-- Latest Movies Slider -->
       <section class="mb-10">
         <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
@@ -134,8 +163,9 @@
   </div>
 </template>
 
-<script setup>
-import { ref, computed, onMounted } from 'vue'
+<script setup lang="ts">
+import { ref, onMounted } from 'vue'
+import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import { useI18n } from 'vue-i18n'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Pagination } from 'swiper/modules'
@@ -158,7 +188,6 @@ const popularBreakpoints = {
 }
 
 const { locale } = useI18n()
-const direction = computed(() => (locale.value === 'fa' ? 'rtl' : 'ltr'))
 
 const latestDemo = [
   {
@@ -311,7 +340,7 @@ onMounted(async () => {
     if (Array.isArray(res.data) && res.data.length > 0) {
       latestMovies.value = res.data
     }
-  } catch (e) {
+  } catch {
     latestMovies.value = [...latestDemo]
   }
 
@@ -320,7 +349,7 @@ onMounted(async () => {
     if (Array.isArray(res.data) && res.data.length > 0) {
       popularMovies.value = res.data
     }
-  } catch (e) {
+  } catch {
     popularMovies.value = [...popularDemo]
   }
 
@@ -329,7 +358,7 @@ onMounted(async () => {
     if (Array.isArray(res.data) && res.data.length > 0) {
       movies.value = res.data
     }
-  } catch (e) {
+  } catch {
     movies.value = [...demoMovies]
   }
 
@@ -338,7 +367,7 @@ onMounted(async () => {
     if (Array.isArray(res.data) && res.data.length > 0) {
       seriesList.value = res.data
     }
-  } catch (e) {
+  } catch {
     seriesList.value = [...demoSeries]
   }
 })
