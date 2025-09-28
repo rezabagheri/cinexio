@@ -32,6 +32,11 @@ Cinexio is a feature-rich platform for:
 - **User Settings:** Personalize your experience
 - **API Access:** Secure API tokens for integrations
 
+- **Modern Netflix-style Auth:** Beautiful login and registration pages inspired by Netflix, with full i18n and language switcher
+- **Multilingual UI:** Seamless language switching (fa/en) across all pages, including auth
+- **Robust Error Handling:** All forms show both client and server-side validation errors
+- **Accessible & Responsive:** <html lang> and directionality (rtl/ltr) always match current locale
+
 ---
 
 ## Tech Stack
@@ -81,7 +86,7 @@ Cinexio is a feature-rich platform for:
 - [x] Eloquent models and relationships
 - [x] Database migrations
 - [x] Realistic seeders for all tables
-- [x] User authentication and registration
+- [x] User authentication and registration (Netflix-style, i18n, language switcher, error handling)
 - [x] Movie and series CRUD
 - [x] Playlists, watchlists, and favorites
 - [x] Reviews, ratings, and comments
@@ -177,11 +182,11 @@ We are building Cinexio in clear, focused phases. Each phase is tracked in the c
 
 ## Localization
 
-- Supports both Persian (fa) and English (en) using Laravel's language files.
-- All API and UI messages are localizable.
-- Language files are located in [`lang/fa/`](lang/fa/) and [`lang/en/`](lang/en/).
-- Example usage: `__('messages.welcome')`, `__('navigation.login')`
-- Language selector available in the UI for switching between fa/en.
+- Supports both Persian (fa) and English (en) using Laravel's language files and Vue i18n.
+- All API and UI messages are localizable, including all frontend forms and error messages.
+- Language files: [`lang/fa/`](lang/fa/), [`lang/en/`](lang/en/), and `resources/js/i18n.ts` for SPA.
+- Language selector is always visible (including on login/register) and persists across navigation.
+- <html lang> and directionality (rtl/ltr) are always synced with the current locale for accessibility and SEO.
 
 ---
 
