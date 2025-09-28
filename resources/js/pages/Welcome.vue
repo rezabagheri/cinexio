@@ -43,6 +43,8 @@
     <!-- ...existing code... -->
   </DefaultLayout>
 
+</template>
+
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
