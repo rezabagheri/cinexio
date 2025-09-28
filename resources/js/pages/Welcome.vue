@@ -13,28 +13,29 @@
         </select>
       </nav>
     </header>
-    <main class="pt-8 pb-16 px-4">
+    <main class="pt-8 pb-16 px-2 sm:px-4">
       <section class="mb-10">
         <h2 class="text-xl font-semibold mb-4">{{ $t('sliderTitle') }}</h2>
         <Swiper
           :modules="swiperModules"
-          :slides-per-view="3"
-          :space-between="24"
+          :slides-per-view="1"
+          :space-between="12"
+          :breakpoints="swiperBreakpoints"
           navigation
           pagination
           class="movie-swiper"
         >
           <SwiperSlide v-for="movie in movies" :key="movie.id">
-            <div class="movie-card relative w-56 flex-shrink-0 rounded-lg overflow-hidden bg-gray-900 shadow-lg">
-              <div class="w-full h-80 flex items-center justify-center bg-gray-700">
-                <img v-if="movie.poster" :src="movie.poster" :alt="movie.title" class="object-cover w-full h-full" />
+            <div class="movie-card group relative w-full sm:w-56 flex-shrink-0 rounded-xl overflow-hidden bg-gray-900 shadow-lg transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl">
+              <div class="w-full h-64 sm:h-80 flex items-center justify-center bg-gray-700 overflow-hidden">
+                <img v-if="movie.poster" :src="movie.poster" :alt="movie.title" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" />
                 <span v-else>Poster</span>
               </div>
               <div class="p-4">
-                <div class="text-lg font-bold mb-1">{{ movie.title }}</div>
+                <div class="text-lg font-bold mb-1 truncate">{{ movie.title }}</div>
                 <div class="text-sm text-gray-300 mb-2">{{ movie.year }}</div>
                 <div class="text-xs text-yellow-400">★ {{ movie.rating }}</div>
-                <div class="text-xs mt-2">{{ movie.summary }}</div>
+                <div class="text-xs mt-2 line-clamp-2">{{ movie.summary }}</div>
               </div>
             </div>
           </SwiperSlide>
@@ -44,23 +45,24 @@
         <h2 class="text-xl font-semibold mb-4">{{ $t('seriesSliderTitle') || 'Series Slider' }}</h2>
         <Swiper
           :modules="swiperModules"
-          :slides-per-view="3"
-          :space-between="24"
+          :slides-per-view="1"
+          :space-between="12"
+          :breakpoints="swiperBreakpoints"
           navigation
           pagination
           class="movie-swiper"
         >
           <SwiperSlide v-for="series in seriesList" :key="series.id">
-            <div class="movie-card relative w-56 flex-shrink-0 rounded-lg overflow-hidden bg-gray-900 shadow-lg">
-              <div class="w-full h-80 flex items-center justify-center bg-gray-700">
-                <img v-if="series.poster" :src="series.poster" :alt="series.title" class="object-cover w-full h-full" />
+            <div class="movie-card group relative w-full sm:w-56 flex-shrink-0 rounded-xl overflow-hidden bg-gray-900 shadow-lg transition-transform duration-300 hover:-translate-y-2 hover:shadow-2xl">
+              <div class="w-full h-64 sm:h-80 flex items-center justify-center bg-gray-700 overflow-hidden">
+                <img v-if="series.poster" :src="series.poster" :alt="series.title" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" />
                 <span v-else>Poster</span>
               </div>
               <div class="p-4">
-                <div class="text-lg font-bold mb-1">{{ series.title }}</div>
+                <div class="text-lg font-bold mb-1 truncate">{{ series.title }}</div>
                 <div class="text-sm text-gray-300 mb-2">{{ series.year }}</div>
                 <div class="text-xs text-yellow-400">★ {{ series.rating }}</div>
-                <div class="text-xs mt-2">{{ series.summary }}</div>
+                <div class="text-xs mt-2 line-clamp-2">{{ series.summary }}</div>
               </div>
             </div>
           </SwiperSlide>
@@ -81,6 +83,12 @@ import 'swiper/css/pagination'
 import axios from 'axios'
 
 const swiperModules = [Navigation, Pagination]
+
+const swiperBreakpoints = {
+  640: { slidesPerView: 2, spaceBetween: 16 },
+  1024: { slidesPerView: 3, spaceBetween: 24 },
+  1440: { slidesPerView: 4, spaceBetween: 32 },
+}
 
 const { locale } = useI18n()
 const direction = computed(() => (locale.value === 'fa' ? 'rtl' : 'ltr'))
@@ -190,18 +198,26 @@ onMounted(async () => {
 .movie-swiper {
   padding-bottom: 2.5rem;
 }
-.slider::-webkit-scrollbar {
-  height: 8px;
-  background: #222;
-}
-.slider::-webkit-scrollbar-thumb {
-  background: #444;
-  border-radius: 4px;
-}
+
 .movie-card {
-  min-width: 14rem;
-  max-width: 14rem;
-  min-height: 20rem;
+  min-width: 0;
+  max-width: 20rem;
+  min-height: 18rem;
   box-shadow: 0 4px 24px 0 #000a;
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .movie-card {
+    max-width: 100%;
+    min-width: 0;
+  }
 }
 </style>
