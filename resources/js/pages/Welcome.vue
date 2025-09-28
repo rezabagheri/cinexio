@@ -1,8 +1,8 @@
 <template>
   <DefaultLayout>
     <template #nav>
-  <Link href="/login" class="hover:text-primary transition">{{ $t('login') }}</Link>
-  <Link href="/register" class="hover:text-primary transition">{{ $t('register') }}</Link>
+  <Link :href="`/login?locale=${locale}`" class="hover:text-primary transition">{{ $t('login') }}</Link>
+  <Link :href="`/register?locale=${locale}`" class="hover:text-primary transition">{{ $t('register') }}</Link>
       <select v-model="locale" class="bg-gray-800 text-white rounded px-2 py-1 ml-4">
         <option value="fa">FA</option>
         <option value="en">EN</option>

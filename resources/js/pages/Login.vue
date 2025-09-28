@@ -38,7 +38,7 @@
         </form>
         <div class="mt-6 text-center">
           <span class="text-gray-400">{{ $t('noAccount') }}</span>
-          <a href="/register" class="text-primary hover:underline ml-2">{{ $t('register') }}</a>
+          <a :href="`/register?locale=${locale}`" class="text-primary hover:underline ml-2">{{ $t('register') }}</a>
         </div>
       </div>
     </div>
@@ -46,13 +46,18 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import { useI18n } from 'vue-i18n'
-
-const { t } = useI18n()
-
 const { t, locale } = useI18n()
+
+onMounted(() => {
+  const urlParams = new URLSearchParams(window.location.search)
+  const loc = urlParams.get('locale')
+  if (loc && (loc === 'fa' || loc === 'en')) {
+    locale.value = loc
+  }
+})
 
 const form = ref({
   email: '',
