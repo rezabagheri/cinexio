@@ -1,6 +1,6 @@
 # Cinexio
 
-[![Laravel](https://img.shields.io/badge/Laravel-10.x-red?logo=laravel)](https://laravel.com/)
+[![Laravel](https://img.shields.io/badge/Laravel-12.x-red?logo=laravel)](https://laravel.com/)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 A modern web application for managing your personal movie and series archive, with powerful social networking features. Built with Laravel.
