@@ -29,7 +29,7 @@
           pagination
           class="movie-swiper bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-xl py-4"
         >
-          <SwiperSlide v-for="movie in latestDemo" :key="movie.id">
+          <SwiperSlide v-for="movie in latestMovies" :key="movie.id">
             <div class="movie-card group relative w-full sm:w-72 flex-shrink-0 rounded-2xl overflow-hidden bg-gray-900 shadow-2xl transition-transform duration-300 hover:-translate-y-2 hover:shadow-blue-700/40">
               <div class="w-full h-80 flex items-center justify-center bg-gray-700 overflow-hidden">
                 <img v-if="movie.poster" :src="movie.poster" :alt="movie.title" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300" />
@@ -60,7 +60,7 @@
           pagination
           class="movie-swiper bg-gradient-to-r from-yellow-100/10 via-yellow-400/10 to-yellow-100/10 rounded-xl py-4"
         >
-          <SwiperSlide v-for="movie in popularDemo" :key="movie.id">
+          <SwiperSlide v-for="movie in popularMovies" :key="movie.id">
             <div class="movie-card group relative w-full sm:w-52 flex-shrink-0 rounded-xl overflow-hidden bg-yellow-900/80 shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:shadow-yellow-400/40">
               <div class="w-full h-56 flex items-center justify-center bg-yellow-700/60 overflow-hidden">
                 <img v-if="movie.poster" :src="movie.poster" :alt="movie.title" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" />
@@ -230,7 +230,6 @@ const popularDemo = [
   },
 ]
 
-// ...existing code for demoMovies, demoSeries, movies, seriesList, onMounted, etc...
 const demoMovies = [
   {
     id: 1,
@@ -301,10 +300,30 @@ const demoSeries = [
   },
 ]
 
+const latestMovies = ref([...latestDemo])
+const popularMovies = ref([...popularDemo])
 const movies = ref([...demoMovies])
 const seriesList = ref([...demoSeries])
 
 onMounted(async () => {
+  try {
+    const res = await axios.get('/api/v1/movies/latest')
+    if (Array.isArray(res.data) && res.data.length > 0) {
+      latestMovies.value = res.data
+    }
+  } catch (e) {
+    latestMovies.value = [...latestDemo]
+  }
+
+  try {
+    const res = await axios.get('/api/v1/movies/popular')
+    if (Array.isArray(res.data) && res.data.length > 0) {
+      popularMovies.value = res.data
+    }
+  } catch (e) {
+    popularMovies.value = [...popularDemo]
+  }
+
   try {
     const res = await axios.get('/api/v1/movies')
     if (Array.isArray(res.data) && res.data.length > 0) {
