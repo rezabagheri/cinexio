@@ -45,21 +45,21 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
+import axios from 'axios'
 
 const swiperModules = [Navigation, Pagination]
 
 const { locale } = useI18n()
-
 const direction = computed(() => (locale.value === 'fa' ? 'rtl' : 'ltr'))
 
-const movies = ref([
+const demoMovies = [
   {
     id: 1,
     title: 'Inception',
@@ -92,7 +92,21 @@ const movies = ref([
     summary: 'Test summary',
     poster: '',
   },
-])
+]
+
+const movies = ref([...demoMovies])
+
+onMounted(async () => {
+  try {
+    const res = await axios.get('/api/v1/movies')
+    if (Array.isArray(res.data) && res.data.length > 0) {
+      movies.value = res.data
+    }
+  } catch (e) {
+    // fallback to demoMovies
+    movies.value = [...demoMovies]
+  }
+})
 </script>
 
 <style scoped>
