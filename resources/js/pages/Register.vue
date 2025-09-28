@@ -1,6 +1,6 @@
 <template>
   <DefaultLayout>
-    <div class="flex justify-end w-full max-w-md mx-auto pt-8">
+    <div class="fixed top-4 right-4 z-50">
       <select v-model="locale" class="bg-gray-800 text-white rounded px-2 py-1">
         <option value="fa">FA</option>
         <option value="en">EN</option>
