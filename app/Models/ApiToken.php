@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Cinexio - A personal movie and series archive management system with social networking features.
  *
@@ -17,19 +18,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Review
+ * Class ApiToken
  *
  * @property int $id
  * @property int $user_id
- * @property int $movie_id
- * @property string $body
+ * @property string $token
+ * @property string|null $name
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  *
  * @property-read User $user
- * @property-read Movie $movie
  */
-class Review extends Model
+class ApiToken extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -38,27 +38,17 @@ class Review extends Model
      */
     protected $fillable = [
         'user_id',
-        'movie_id',
-        'body',
+        'token',
+        'name',
     ];
 
     /**
-     * Get the user that wrote the review.
+     * Get the user that owns the API token.
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    /**
-     * Get the movie that is reviewed.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function movie()
-    {
-        return $this->belongsTo(Movie::class);
     }
 }
