@@ -307,7 +307,7 @@ const seriesList = ref([...demoSeries])
 
 onMounted(async () => {
   try {
-    const res = await axios.get('/api/v1/movies/latest')
+    const res = await axios.get('/v1/movies/latest')
     if (Array.isArray(res.data) && res.data.length > 0) {
       latestMovies.value = res.data
     }
@@ -316,7 +316,7 @@ onMounted(async () => {
   }
 
   try {
-    const res = await axios.get('/api/v1/movies/popular')
+    const res = await axios.get('/v1/movies/popular')
     if (Array.isArray(res.data) && res.data.length > 0) {
       popularMovies.value = res.data
     }
@@ -325,7 +325,7 @@ onMounted(async () => {
   }
 
   try {
-    const res = await axios.get('/api/v1/movies')
+    const res = await axios.get('/v1/movies')
     if (Array.isArray(res.data) && res.data.length > 0) {
       movies.value = res.data
     }
@@ -334,7 +334,7 @@ onMounted(async () => {
   }
 
   try {
-    const res = await axios.get('/api/v1/series')
+    const res = await axios.get('/v1/series')
     if (Array.isArray(res.data) && res.data.length > 0) {
       seriesList.value = res.data
     }
