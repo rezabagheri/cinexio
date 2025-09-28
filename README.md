@@ -121,6 +121,16 @@ We are building Cinexio in clear, focused phases. Each phase is tracked in the c
 
 ---
 
+## API Structure
+
+- All API endpoints are versioned and available under `/api/v1/`.
+- RESTful resource controllers for all main entities (movies, series, users, playlists, etc.)
+- All responses are JSON, designed for both web and future mobile app use.
+- Example: `GET /api/v1/movies`, `POST /api/v1/reviews`, etc.
+- See [`routes/api.php`](routes/api.php) for the full list of endpoints.
+
+---
+
 ## License
 
 This project is open-sourced under the [MIT license](LICENSE).
