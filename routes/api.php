@@ -32,5 +32,6 @@ Route::prefix('v1')->group(function () {
     Route::apiResource('movie-tags', App\Http\Controllers\Api\V1\MovieTagController::class);
     Route::apiResource('movie-people', App\Http\Controllers\Api\V1\MoviePersonController::class);
     Route::apiResource('series-people', App\Http\Controllers\Api\V1\SeriesPersonController::class);
+    Route::get('search', App\Http\Controllers\Api\V1\SearchController::class);
     // Add more as needed
 });

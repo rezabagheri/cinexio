@@ -89,7 +89,7 @@ Cinexio is a feature-rich platform for:
 - [x] Notifications and activity logs
 - [x] User settings and preferences
 - [x] API token management
-- [ ] RESTful API endpoints
+- [x] RESTful API endpoints
 - [ ] Frontend (Inertia.js or Vue/React)
 - [ ] Responsive UI/UX
 - [ ] Testing (unit, feature)
@@ -128,6 +128,26 @@ We are building Cinexio in clear, focused phases. Each phase is tracked in the c
 - All responses are JSON, designed for both web and future mobile app use.
 - Example: `GET /api/v1/movies`, `POST /api/v1/reviews`, etc.
 - See [`routes/api.php`](routes/api.php) for the full list of endpoints.
+
+---
+
+## Search API
+
+- Global search endpoint: `GET /api/v1/search?q=...`
+- Searches movies, series, people, and users in a single request
+- Returns results grouped by type (movies, series, people, users)
+- Example response:
+  ```json
+  {
+    "results": {
+      "movies": [...],
+      "series": [...],
+      "people": [...],
+      "users": [...]
+    },
+    "message": "Search..."
+  }
+  ```
 
 ---
 
