@@ -17,10 +17,25 @@ createInertiaApp({
             import.meta.glob<DefineComponent>('./pages/**/*.vue'),
         ),
     setup({ el, App, props, plugin }) {
-        createApp({ render: () => h(App, props) })
+        const vueApp = createApp({ render: () => h(App, props) })
             .use(plugin)
-            .use(i18n)
-            .mount(el);
+            .use(i18n);
+
+        // Watch for locale changes and update <html lang>
+        vueApp.mixin({
+            mounted() {
+                if (this.$i18n && this.$i18n.locale) {
+                    document.documentElement.setAttribute('lang', this.$i18n.locale)
+                }
+            },
+            watch: {
+                '$i18n.locale'(val) {
+                    document.documentElement.setAttribute('lang', val)
+                }
+            }
+        });
+
+        vueApp.mount(el);
     },
     progress: {
         color: '#4B5563',
