@@ -131,6 +131,30 @@ We are building Cinexio in clear, focused phases. Each phase is tracked in the c
 
 ---
 
+## Movies API Example
+
+- **Endpoint:** `GET /api/v1/movies`
+- **Description:** Returns a JSON array of the latest 10 movies with fields: id, title, year, rating, summary, poster.
+- **Sample Response:**
+  ```json
+  [
+    {
+      "id": 1,
+      "title": "Inception",
+      "year": 2010,
+      "rating": 8.8,
+      "summary": "A thief who steals corporate secrets through dream-sharing technology.",
+      "poster": "https://image.tmdb.org/t/p/w500/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg"
+    },
+    ...
+  ]
+  ```
+- **Frontend Integration:**
+  - The Vue/Welcome page will fetch this endpoint and display the movies in a Swiper slider.
+  - If the API is unavailable, fallback demo data will be used.
+
+---
+
 ## Search API
 
 - Global search endpoint: `GET /api/v1/search?q=...`

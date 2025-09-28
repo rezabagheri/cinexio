@@ -13,7 +13,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        //
+        $movies = Movie::latest()->take(10)->get(['id', 'title', 'year', 'rating', 'summary', 'poster']);
+        return response()->json($movies);
     }
 
     /**
