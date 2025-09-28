@@ -6,6 +6,9 @@ const messages = {
     login: 'Login',
     register: 'Register',
     sliderTitle: 'Test Slider',
+    latestMovies: 'Latest Movies',
+    mostPopularMovies: 'Most Popular Movies',
+    latestSeries: 'Latest Series',
     // ...
   },
   fa: {
@@ -13,6 +16,9 @@ const messages = {
     login: 'ورود',
     register: 'ثبت نام',
     sliderTitle: 'اسلایدر تست',
+    latestMovies: 'جدیدترین فیلم‌ها',
+    mostPopularMovies: 'محبوب‌ترین فیلم‌ها',
+    latestSeries: 'جدیدترین سریال‌ها',
     // ...
   },
 }
