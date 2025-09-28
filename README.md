@@ -131,6 +131,16 @@ We are building Cinexio in clear, focused phases. Each phase is tracked in the c
 
 ---
 
+## Localization
+
+- Supports both Persian (fa) and English (en) using Laravel's language files.
+- All API and UI messages are localizable.
+- Language files are located in [`lang/fa/`](lang/fa/) and [`lang/en/`](lang/en/).
+- Example usage: `__('messages.welcome')`, `__('navigation.login')`
+- Language selector available in the UI for switching between fa/en.
+
+---
+
 ## License
 
 This project is open-sourced under the [MIT license](LICENSE).
