@@ -14,6 +14,68 @@
       </nav>
     </header>
     <main class="pt-8 pb-16 px-2 sm:px-4">
+      <!-- Latest Movies Slider -->
+      <section class="mb-10">
+        <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+          <span class="inline-block w-2 h-6 bg-blue-500 rounded-sm"></span>
+          جدیدترین فیلم‌ها
+        </h2>
+        <Swiper
+          :modules="swiperModules"
+          :slides-per-view="1"
+          :space-between="12"
+          :breakpoints="swiperBreakpoints"
+          navigation
+          pagination
+          class="movie-swiper bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-xl py-4"
+        >
+          <SwiperSlide v-for="movie in latestDemo" :key="movie.id">
+            <div class="movie-card group relative w-full sm:w-72 flex-shrink-0 rounded-2xl overflow-hidden bg-gray-900 shadow-2xl transition-transform duration-300 hover:-translate-y-2 hover:shadow-blue-700/40">
+              <div class="w-full h-80 flex items-center justify-center bg-gray-700 overflow-hidden">
+                <img v-if="movie.poster" :src="movie.poster" :alt="movie.title" class="object-cover w-full h-full group-hover:scale-110 transition-transform duration-300" />
+                <span v-else>Poster</span>
+              </div>
+              <div class="p-5">
+                <div class="text-xl font-bold mb-1 truncate">{{ movie.title }}</div>
+                <div class="text-sm text-gray-300 mb-2">{{ movie.year }}</div>
+                <div class="text-xs text-blue-400 font-bold">★ {{ movie.rating }}</div>
+                <div class="text-xs mt-2 line-clamp-2">{{ movie.summary }}</div>
+              </div>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </section>
+      <!-- Most Popular Movies Slider -->
+      <section class="mb-10">
+        <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+          <span class="inline-block w-2 h-6 bg-yellow-400 rounded-sm"></span>
+          محبوب‌ترین‌ها
+        </h2>
+        <Swiper
+          :modules="swiperModules"
+          :slides-per-view="2"
+          :space-between="10"
+          :breakpoints="popularBreakpoints"
+          navigation
+          pagination
+          class="movie-swiper bg-gradient-to-r from-yellow-100/10 via-yellow-400/10 to-yellow-100/10 rounded-xl py-4"
+        >
+          <SwiperSlide v-for="movie in popularDemo" :key="movie.id">
+            <div class="movie-card group relative w-full sm:w-52 flex-shrink-0 rounded-xl overflow-hidden bg-yellow-900/80 shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:shadow-yellow-400/40">
+              <div class="w-full h-56 flex items-center justify-center bg-yellow-700/60 overflow-hidden">
+                <img v-if="movie.poster" :src="movie.poster" :alt="movie.title" class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300" />
+                <span v-else>Poster</span>
+              </div>
+              <div class="p-3">
+                <div class="text-base font-bold mb-1 truncate">{{ movie.title }}</div>
+                <div class="text-xs text-yellow-200 mb-1">{{ movie.year }}</div>
+                <div class="text-xs text-yellow-400 font-bold">★ {{ movie.rating }}</div>
+              </div>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </section>
+      <!-- Existing Sliders ... -->
       <section class="mb-10">
         <h2 class="text-xl font-semibold mb-4">{{ $t('sliderTitle') }}</h2>
         <Swiper
@@ -89,10 +151,86 @@ const swiperBreakpoints = {
   1024: { slidesPerView: 3, spaceBetween: 24 },
   1440: { slidesPerView: 4, spaceBetween: 32 },
 }
+const popularBreakpoints = {
+  640: { slidesPerView: 3, spaceBetween: 12 },
+  1024: { slidesPerView: 4, spaceBetween: 18 },
+  1440: { slidesPerView: 5, spaceBetween: 24 },
+}
 
 const { locale } = useI18n()
 const direction = computed(() => (locale.value === 'fa' ? 'rtl' : 'ltr'))
 
+const latestDemo = [
+  {
+    id: 11,
+    title: 'Dune: Part Two',
+    year: 2025,
+    rating: 9.1,
+    summary: 'Paul Atreides unites with Chani and the Fremen while seeking revenge.',
+    poster: 'https://image.tmdb.org/t/p/w500/8b8R8l88Qje9dn9OE8PY05Nxl1X.jpg',
+  },
+  {
+    id: 12,
+    title: 'Oppenheimer',
+    year: 2023,
+    rating: 8.7,
+    summary: 'The story of American scientist J. Robert Oppenheimer.',
+    poster: 'https://image.tmdb.org/t/p/w500/ptpr0kGAckfQkJeJIt8st5dglvd.jpg',
+  },
+  {
+    id: 13,
+    title: 'Barbie',
+    year: 2023,
+    rating: 7.5,
+    summary: 'Barbie suffers a crisis that leads her to question her world.',
+    poster: 'https://image.tmdb.org/t/p/w500/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg',
+  },
+  {
+    id: 14,
+    title: 'Test Latest',
+    year: 2025,
+    rating: 10,
+    summary: 'Test summary',
+    poster: '',
+  },
+]
+
+const popularDemo = [
+  {
+    id: 21,
+    title: 'The Shawshank Redemption',
+    year: 1994,
+    rating: 9.3,
+    summary: 'Two imprisoned men bond over a number of years.',
+    poster: 'https://image.tmdb.org/t/p/w500/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg',
+  },
+  {
+    id: 22,
+    title: 'The Godfather',
+    year: 1972,
+    rating: 9.2,
+    summary: 'The aging patriarch of an organized crime dynasty transfers control.',
+    poster: 'https://image.tmdb.org/t/p/w500/3bhkrj58Vtu7enYsRolD1fZdja1.jpg',
+  },
+  {
+    id: 23,
+    title: 'The Dark Knight',
+    year: 2008,
+    rating: 9.0,
+    summary: 'Batman faces the Joker, a criminal mastermind.',
+    poster: 'https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg',
+  },
+  {
+    id: 24,
+    title: 'Test Popular',
+    year: 2025,
+    rating: 10,
+    summary: 'Test summary',
+    poster: '',
+  },
+]
+
+// ...existing code for demoMovies, demoSeries, movies, seriesList, onMounted, etc...
 const demoMovies = [
   {
     id: 1,
