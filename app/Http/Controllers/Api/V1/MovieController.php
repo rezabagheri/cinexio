@@ -13,7 +13,17 @@ class MovieController extends Controller
      */
     public function latest()
     {
-        $movies = Movie::orderByDesc('created_at')->take(10)->get(['id', 'title', 'year', 'rating', 'summary', 'poster']);
+        $movies = Movie::orderByDesc('created_at')->take(10)->get(['id', 'title', 'year', 'rating', 'description', 'poster_url']);
+        $movies = $movies->map(function ($movie) {
+            return [
+                'id' => $movie->id,
+                'title' => $movie->title,
+                'year' => $movie->year,
+                'rating' => $movie->rating,
+                'summary' => $movie->description,
+                'poster' => $movie->poster_url,
+            ];
+        });
         return response()->json($movies);
     }
 
@@ -22,7 +32,17 @@ class MovieController extends Controller
      */
     public function popular()
     {
-        $movies = Movie::orderByDesc('rating')->take(10)->get(['id', 'title', 'year', 'rating', 'summary', 'poster']);
+        $movies = Movie::orderByDesc('rating')->take(10)->get(['id', 'title', 'year', 'rating', 'description', 'poster_url']);
+        $movies = $movies->map(function ($movie) {
+            return [
+                'id' => $movie->id,
+                'title' => $movie->title,
+                'year' => $movie->year,
+                'rating' => $movie->rating,
+                'summary' => $movie->description,
+                'poster' => $movie->poster_url,
+            ];
+        });
         return response()->json($movies);
     }
     /**
@@ -30,7 +50,17 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Movie::latest()->take(10)->get(['id', 'title', 'year', 'rating', 'summary', 'poster']);
+        $movies = Movie::latest()->take(10)->get(['id', 'title', 'year', 'rating', 'description', 'poster_url']);
+        $movies = $movies->map(function ($movie) {
+            return [
+                'id' => $movie->id,
+                'title' => $movie->title,
+                'year' => $movie->year,
+                'rating' => $movie->rating,
+                'summary' => $movie->description,
+                'poster' => $movie->poster_url,
+            ];
+        });
         return response()->json($movies);
     }
 

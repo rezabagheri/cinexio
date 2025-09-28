@@ -13,7 +13,18 @@ class SeriesController extends Controller
      */
     public function index()
     {
-        //
+        $series = \App\Models\Series::orderByDesc('created_at')->take(10)->get(['id', 'title', 'start_year', 'rating', 'description', 'poster_url']);
+        $series = $series->map(function ($item) {
+            return [
+                'id' => $item->id,
+                'title' => $item->title,
+                'year' => $item->start_year,
+                'rating' => $item->rating,
+                'summary' => $item->description,
+                'poster' => $item->poster_url,
+            ];
+        });
+        return response()->json($series);
     }
 
     /**
