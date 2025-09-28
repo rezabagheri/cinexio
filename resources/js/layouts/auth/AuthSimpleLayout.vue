@@ -11,9 +11,11 @@ defineProps<{
 
 <template>
     <div class="flex min-h-svh flex-col items-center justify-center gap-6 bg-background p-6 md:p-10">
-        <div class="absolute top-4 right-4 z-50">
-            <slot name="lang-switcher" />
-        </div>
+            <div class="flex justify-center w-full mt-8 mb-4 z-50">
+                <div class="bg-black/80 rounded-xl shadow-lg px-4 py-2 flex items-center gap-2 border border-gray-700">
+                    <slot name="lang-switcher" />
+                </div>
+            </div>
         <div class="w-full max-w-sm">
             <div class="flex flex-col gap-8">
                 <div class="flex flex-col items-center gap-4">
