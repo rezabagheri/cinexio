@@ -24,6 +24,8 @@ const messages = {
     loginFailed: 'Login failed. Please check your credentials.',
     logout: 'Logout',
     home: 'Home',
+      name: 'Name',
+      nameRequired: 'Name is required.',
     // ...
   },
   fa: {
@@ -49,6 +51,8 @@ const messages = {
     loginFailed: 'ورود ناموفق بود. لطفا اطلاعات خود را بررسی کنید.',
     logout: 'خروج',
     home: 'خانه',
+      name: 'نام',
+      nameRequired: 'وارد کردن نام الزامی است.',
     // ...
   },
 }
