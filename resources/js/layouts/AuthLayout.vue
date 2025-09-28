@@ -7,8 +7,12 @@ defineProps<{
 }>();
 </script>
 
+
 <template>
     <AuthLayout :title="title" :description="description">
+        <template #lang-switcher>
+            <slot name="lang-switcher" />
+        </template>
         <slot />
     </AuthLayout>
 </template>
