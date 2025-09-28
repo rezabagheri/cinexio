@@ -1,8 +1,8 @@
 <template>
   <DefaultLayout>
     <template #nav>
-  <router-link to="/login" class="hover:text-primary transition">{{ $t('login') }}</router-link>
-  <router-link to="/register" class="hover:text-primary transition">{{ $t('register') }}</router-link>
+  <Link href="/login" class="hover:text-primary transition">{{ $t('login') }}</Link>
+  <Link href="/register" class="hover:text-primary transition">{{ $t('register') }}</Link>
       <select v-model="locale" class="bg-gray-800 text-white rounded px-2 py-1 ml-4">
         <option value="fa">FA</option>
         <option value="en">EN</option>
@@ -107,11 +107,13 @@
 </template>
 
 <script setup lang="ts">
+
 import { ref, onMounted } from 'vue'
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import { useI18n } from 'vue-i18n'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Pagination } from 'swiper/modules'
+import { Link } from '@inertiajs/vue3'
 import 'swiper/css'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
