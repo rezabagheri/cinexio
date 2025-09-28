@@ -40,6 +40,32 @@
           </SwiperSlide>
         </Swiper>
       </section>
+      <section class="mb-10">
+        <h2 class="text-xl font-semibold mb-4">{{ $t('seriesSliderTitle') || 'Series Slider' }}</h2>
+        <Swiper
+          :modules="swiperModules"
+          :slides-per-view="3"
+          :space-between="24"
+          navigation
+          pagination
+          class="movie-swiper"
+        >
+          <SwiperSlide v-for="series in seriesList" :key="series.id">
+            <div class="movie-card relative w-56 flex-shrink-0 rounded-lg overflow-hidden bg-gray-900 shadow-lg">
+              <div class="w-full h-80 flex items-center justify-center bg-gray-700">
+                <img v-if="series.poster" :src="series.poster" :alt="series.title" class="object-cover w-full h-full" />
+                <span v-else>Poster</span>
+              </div>
+              <div class="p-4">
+                <div class="text-lg font-bold mb-1">{{ series.title }}</div>
+                <div class="text-sm text-gray-300 mb-2">{{ series.year }}</div>
+                <div class="text-xs text-yellow-400">★ {{ series.rating }}</div>
+                <div class="text-xs mt-2">{{ series.summary }}</div>
+              </div>
+            </div>
+          </SwiperSlide>
+        </Swiper>
+      </section>
     </main>
   </div>
 </template>
@@ -94,7 +120,43 @@ const demoMovies = [
   },
 ]
 
+const demoSeries = [
+  {
+    id: 1,
+    title: 'Breaking Bad',
+    year: 2008,
+    rating: 9.5,
+    summary: 'A high school chemistry teacher turned methamphetamine producer.',
+    poster: 'https://image.tmdb.org/t/p/w500/ggFHVNu6YYI5L9pCfOacjizRGt.jpg',
+  },
+  {
+    id: 2,
+    title: 'Game of Thrones',
+    year: 2011,
+    rating: 9.2,
+    summary: 'Nine noble families wage war against each other in order to gain control over the mythical land of Westeros.',
+    poster: 'https://image.tmdb.org/t/p/w500/u3bZgnGQ9T01sWNhyveQz0wH0Hl.jpg',
+  },
+  {
+    id: 3,
+    title: 'Stranger Things',
+    year: 2016,
+    rating: 8.7,
+    summary: 'A group of young friends witness supernatural forces and secret government exploits.',
+    poster: 'https://image.tmdb.org/t/p/w500/x2LSRK2Cm7MZhjluni1msVJ3wDF.jpg',
+  },
+  {
+    id: 4,
+    title: 'Test Series',
+    year: 2025,
+    rating: 10,
+    summary: 'Test summary',
+    poster: '',
+  },
+]
+
 const movies = ref([...demoMovies])
+const seriesList = ref([...demoSeries])
 
 onMounted(async () => {
   try {
@@ -103,8 +165,16 @@ onMounted(async () => {
       movies.value = res.data
     }
   } catch (e) {
-    // fallback to demoMovies
     movies.value = [...demoMovies]
+  }
+
+  try {
+    const res = await axios.get('/api/v1/series')
+    if (Array.isArray(res.data) && res.data.length > 0) {
+      seriesList.value = res.data
+    }
+  } catch (e) {
+    seriesList.value = [...demoSeries]
   }
 })
 </script>
