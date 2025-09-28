@@ -1,8 +1,8 @@
 <template>
   <DefaultLayout>
     <template #nav>
-      <button class="hover:text-primary transition">{{ $t('login') }}</button>
-      <button class="hover:text-primary transition">{{ $t('register') }}</button>
+  <router-link to="/login" class="hover:text-primary transition">{{ $t('login') }}</router-link>
+  <router-link to="/register" class="hover:text-primary transition">{{ $t('register') }}</router-link>
       <select v-model="locale" class="bg-gray-800 text-white rounded px-2 py-1 ml-4">
         <option value="fa">FA</option>
         <option value="en">EN</option>
