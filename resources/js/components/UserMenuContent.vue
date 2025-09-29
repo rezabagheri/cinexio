@@ -44,8 +44,14 @@ const handleLogout = () => {
           prefetch
           as="button"
         >
-          <Settings :class="isFa ? 'ml-2 h-4 w-4' : 'mr-2 h-4 w-4'" />
-          <span class="whitespace-nowrap">{{ t('settings') }}</span>
+          <template v-if="isFa">
+            <span class="whitespace-nowrap">{{ t('settings') }}</span>
+            <Settings class="ml-2 h-4 w-4" />
+          </template>
+          <template v-else>
+            <Settings class="mr-2 h-4 w-4" />
+            <span class="whitespace-nowrap">{{ t('settings') }}</span>
+          </template>
         </Link>
       </DropdownMenuItem>
     </DropdownMenuGroup>
@@ -59,8 +65,14 @@ const handleLogout = () => {
         as="button"
         data-test="logout-button"
       >
-        <LogOut :class="isFa ? 'ml-2 h-4 w-4' : 'mr-2 h-4 w-4'" />
-        <span class="whitespace-nowrap">{{ t('logout') }}</span>
+        <template v-if="isFa">
+          <span class="whitespace-nowrap">{{ t('logout') }}</span>
+          <LogOut class="ml-2 h-4 w-4" />
+        </template>
+        <template v-else>
+          <LogOut class="mr-2 h-4 w-4" />
+          <span class="whitespace-nowrap">{{ t('logout') }}</span>
+        </template>
       </Link>
     </DropdownMenuItem>
   </div>
