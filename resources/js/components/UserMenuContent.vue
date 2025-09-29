@@ -28,40 +28,42 @@ const handleLogout = () => {
 </script>
 
 <template>
+  <div :class="isFa ? 'menu-rtl' : ''">
     <DropdownMenuLabel class="p-0 font-normal">
-        <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-            <UserInfo :user="user" :show-email="true" />
-        </div>
+      <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
+        <UserInfo :user="user" :show-email="true" />
+      </div>
     </DropdownMenuLabel>
     <DropdownMenuSeparator />
     <DropdownMenuGroup>
-        <DropdownMenuItem :as-child="true">
-            <Link
-                class="block w-full"
-                :class="isFa ? 'flex flex-row-reverse items-center justify-end text-right' : 'flex items-center'"
-                :href="edit()"
-                prefetch
-                as="button"
-            >
-                <Settings :class="isFa ? 'ml-2 h-4 w-4' : 'mr-2 h-4 w-4'" />
-                <span class="whitespace-nowrap">{{ t('settings') }}</span>
-            </Link>
-        </DropdownMenuItem>
+      <DropdownMenuItem :as-child="true">
+        <Link
+          class="block w-full"
+          :class="isFa ? 'flex flex-row-reverse items-center justify-end text-right' : 'flex items-center'"
+          :href="edit()"
+          prefetch
+          as="button"
+        >
+          <Settings :class="isFa ? 'ml-2 h-4 w-4' : 'mr-2 h-4 w-4'" />
+          <span class="whitespace-nowrap">{{ t('settings') }}</span>
+        </Link>
+      </DropdownMenuItem>
     </DropdownMenuGroup>
     <DropdownMenuSeparator />
     <DropdownMenuItem :as-child="true">
-        <Link
-            class="block w-full"
-            :class="isFa ? 'flex flex-row-reverse items-center justify-end text-right' : 'flex items-center'"
-            :href="logout()"
-            @click="handleLogout"
-            as="button"
-            data-test="logout-button"
-        >
-            <LogOut :class="isFa ? 'ml-2 h-4 w-4' : 'mr-2 h-4 w-4'" />
-            <span class="whitespace-nowrap">{{ t('logout') }}</span>
-        </Link>
+      <Link
+        class="block w-full"
+        :class="isFa ? 'flex flex-row-reverse items-center justify-end text-right' : 'flex items-center'"
+        :href="logout()"
+        @click="handleLogout"
+        as="button"
+        data-test="logout-button"
+      >
+        <LogOut :class="isFa ? 'ml-2 h-4 w-4' : 'mr-2 h-4 w-4'" />
+        <span class="whitespace-nowrap">{{ t('logout') }}</span>
+      </Link>
     </DropdownMenuItem>
+  </div>
 </template>
 
 <style scoped>
