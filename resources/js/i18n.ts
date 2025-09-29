@@ -71,6 +71,9 @@ const messages = {
     toggleSidebar: 'Toggle Sidebar',
     appearanceSettings: 'Appearance settings',
     appearanceSettingsDesc: "Update your account's appearance settings",
+    appearanceLight: 'Light',
+    appearanceDark: 'Dark',
+    appearanceSystem: 'System',
   },
   fa: {
     welcome: 'خوش آمدید',
@@ -142,6 +145,9 @@ const messages = {
     toggleSidebar: 'باز و بسته کردن سایدبار',
     appearanceSettings: 'تنظیمات ظاهر',
     appearanceSettingsDesc: 'تنظیمات ظاهری حساب کاربری خود را به‌روزرسانی کنید',
+    appearanceLight: 'روشن',
+    appearanceDark: 'تاریک',
+    appearanceSystem: 'سیستم',
   },
 }
 
