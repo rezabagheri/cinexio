@@ -69,6 +69,8 @@ const messages = {
     confirmPasswordDesc: 'This is a secure area of the application. Please confirm your password before continuing.',
     confirmPasswordBtn: 'Confirm Password',
     toggleSidebar: 'Toggle Sidebar',
+    appearanceSettings: 'Appearance settings',
+    appearanceSettingsDesc: "Update your account's appearance settings",
   },
   fa: {
     welcome: 'خوش آمدید',
@@ -138,6 +140,8 @@ const messages = {
     confirmPasswordDesc: 'این بخش از برنامه امن است. لطفاً قبل از ادامه، رمز عبور خود را تأیید کنید.',
     confirmPasswordBtn: 'تأیید رمز عبور',
     toggleSidebar: 'باز و بسته کردن سایدبار',
+    appearanceSettings: 'تنظیمات ظاهر',
+    appearanceSettingsDesc: 'تنظیمات ظاهری حساب کاربری خود را به‌روزرسانی کنید',
   },
 }
 
