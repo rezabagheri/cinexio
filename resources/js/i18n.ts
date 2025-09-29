@@ -65,6 +65,9 @@ const messages = {
     continueSetup: 'Continue Setup',
     twoFactorPromptDesc: 'When you enable two-factor authentication, you will be prompted for a secure pin during login. This pin can be retrieved from a TOTP-supported application on your phone.',
     twoFactorPromptDescEnabled: 'With two-factor authentication enabled, you will be prompted for a secure, random pin during login, which you can retrieve from the TOTP-supported application on your phone.',
+    confirmPasswordTitle: 'Confirm your password',
+    confirmPasswordDesc: 'This is a secure area of the application. Please confirm your password before continuing.',
+    confirmPasswordBtn: 'Confirm Password',
   },
   fa: {
     welcome: 'خوش آمدید',
@@ -77,7 +80,7 @@ const messages = {
     registerSubtitle: 'برای تماشای فیلم و سریال ثبت‌نام کنید.',
     loginSubtitle: 'برای ورود به حساب کاربری وارد شوید.',
     email: 'ایمیل',
-    confirmPassword: 'تکرار رمز عبور',
+    confirmPassword: 'تأیید رمز عبور',
     alreadyHaveAccount: 'قبلاً ثبت‌نام کرده‌اید؟',
     noAccount: 'حساب کاربری ندارید؟',
     rememberMe: 'مرا به خاطر بسپار',
@@ -130,6 +133,9 @@ const messages = {
     continueSetup: 'ادامه راه‌اندازی',
     twoFactorPromptDesc: 'با فعال‌سازی احراز هویت دو مرحله‌ای، هنگام ورود یک کد امنیتی از شما خواسته می‌شود. این کد را می‌توانید از اپلیکیشن TOTP روی گوشی خود دریافت کنید.',
     twoFactorPromptDescEnabled: 'با فعال بودن احراز هویت دو مرحله‌ای، هنگام ورود یک کد امنیتی تصادفی از شما خواسته می‌شود که از اپلیکیشن TOTP روی گوشی خود دریافت می‌کنید.',
+    confirmPasswordTitle: 'تأیید رمز عبور',
+    confirmPasswordDesc: 'این بخش از برنامه امن است. لطفاً قبل از ادامه، رمز عبور خود را تأیید کنید.',
+    confirmPasswordBtn: 'تأیید رمز عبور',
   },
 }
 
