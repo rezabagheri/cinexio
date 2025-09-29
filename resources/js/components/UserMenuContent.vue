@@ -38,13 +38,13 @@ const handleLogout = () => {
         <DropdownMenuItem :as-child="true">
             <Link
                 class="block w-full"
-                :class="isFa ? 'flex flex-row-reverse items-end justify-end text-right' : ''"
+                :class="isFa ? 'flex flex-row-reverse items-center justify-end text-right' : 'flex items-center'"
                 :href="edit()"
                 prefetch
                 as="button"
             >
                 <Settings :class="isFa ? 'ml-2 h-4 w-4' : 'mr-2 h-4 w-4'" />
-                {{ t('settings') }}
+                <span class="whitespace-nowrap">{{ t('settings') }}</span>
             </Link>
         </DropdownMenuItem>
     </DropdownMenuGroup>
@@ -52,14 +52,14 @@ const handleLogout = () => {
     <DropdownMenuItem :as-child="true">
         <Link
             class="block w-full"
-            :class="isFa ? 'flex flex-row-reverse items-end justify-end text-right' : ''"
+            :class="isFa ? 'flex flex-row-reverse items-center justify-end text-right' : 'flex items-center'"
             :href="logout()"
             @click="handleLogout"
             as="button"
             data-test="logout-button"
         >
             <LogOut :class="isFa ? 'ml-2 h-4 w-4' : 'mr-2 h-4 w-4'" />
-            {{ t('logout') }}
+            <span class="whitespace-nowrap">{{ t('logout') }}</span>
         </Link>
     </DropdownMenuItem>
 </template>
