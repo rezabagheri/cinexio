@@ -17,6 +17,8 @@ import { Link } from '@inertiajs/vue3';
 import { BookOpen, Folder, LayoutGrid } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
 
+defineProps<{ side?: 'left' | 'right' }>();
+
 const mainNavItems: NavItem[] = [
     {
         title: 'Dashboard',
@@ -40,7 +42,7 @@ const footerNavItems: NavItem[] = [
 </script>
 
 <template>
-    <Sidebar collapsible="icon" variant="inset">
+    <Sidebar :side="side" collapsible="icon" variant="inset">
         <SidebarHeader>
             <SidebarMenu>
                 <SidebarMenuItem>

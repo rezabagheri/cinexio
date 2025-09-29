@@ -99,7 +99,7 @@ Located in [`routes/`](routes/):
 
 ---
 
--## Frontend & UX
+## Frontend & UX
 
 ### Internationalization (i18n) & Language Switching
 - Uses [vue-i18n](https://kazupon.github.io/vue-i18n/) for all UI text and error messages.
@@ -119,6 +119,10 @@ Located in [`routes/`](routes/):
 	- `direction: rtl` and `text-align: right` are applied globally.
 	- All UI elements, forms, and layouts adapt to RTL and right alignment.
 - `.font-sans` is overridden to use Vazirmatn for Persian.
+
+### RTL Dashboard Sidebar
+- The dashboard sidebar position is now locale-aware: for Persian (fa), the sidebar appears on the right; for other languages, it remains on the left.
+- This is handled in the layout logic and passed as a prop to the sidebar component.
 
 ### Accessibility & UX
 - `<html lang>` and `dir` attributes are always in sync with the current locale.

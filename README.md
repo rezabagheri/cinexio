@@ -190,6 +190,13 @@ We are building Cinexio in clear, focused phases. Each phase is tracked in the c
 
 ---
 
+## RTL Dashboard Sidebar
+
+- The dashboard sidebar now automatically moves to the right side of the screen when the locale is set to Persian (fa).
+- RTL support is improved for dashboard layout and navigation.
+
+---
+
 ## License
 
 This project is open-sourced under the [MIT license](LICENSE).
