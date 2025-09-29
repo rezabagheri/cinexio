@@ -68,6 +68,7 @@ const messages = {
     confirmPasswordTitle: 'Confirm your password',
     confirmPasswordDesc: 'This is a secure area of the application. Please confirm your password before continuing.',
     confirmPasswordBtn: 'Confirm Password',
+    toggleSidebar: 'Toggle Sidebar',
   },
   fa: {
     welcome: 'خوش آمدید',
@@ -136,6 +137,7 @@ const messages = {
     confirmPasswordTitle: 'تأیید رمز عبور',
     confirmPasswordDesc: 'این بخش از برنامه امن است. لطفاً قبل از ادامه، رمز عبور خود را تأیید کنید.',
     confirmPasswordBtn: 'تأیید رمز عبور',
+    toggleSidebar: 'باز و بسته کردن سایدبار',
   },
 }
 

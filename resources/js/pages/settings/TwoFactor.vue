@@ -12,6 +12,7 @@ import { BreadcrumbItem } from '@/types';
 import { Form, Head } from '@inertiajs/vue3';
 import { ShieldBan, ShieldCheck } from 'lucide-vue-next';
 import { onUnmounted, ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 interface Props {
     requiresConfirmation?: boolean;
@@ -23,9 +24,10 @@ withDefaults(defineProps<Props>(), {
     twoFactorEnabled: false,
 });
 
+const { t } = useI18n();
 const breadcrumbs: BreadcrumbItem[] = [
     {
-        title: 'Two-Factor Authentication',
+        title: t('twoFactorAuthFull'),
         href: show.url(),
     },
 ];
