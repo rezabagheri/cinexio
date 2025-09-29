@@ -119,3 +119,7 @@ onUnmounted(() => {
         </SettingsLayout>
     </AppLayout>
 </template>
+
+<style scoped>
+/* ...existing styles... */
+</style>
