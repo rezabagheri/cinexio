@@ -26,6 +26,7 @@ const messages = {
     home: 'Home',
       name: 'Name',
       nameRequired: 'Name is required.',
+    dashboard: 'Dashboard',
     // ...
   },
   fa: {
@@ -53,6 +54,7 @@ const messages = {
     home: 'خانه',
       name: 'نام',
       nameRequired: 'وارد کردن نام الزامی است.',
+    dashboard: 'داشبورد',
     // ...
   },
 }

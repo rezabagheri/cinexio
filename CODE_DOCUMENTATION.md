@@ -124,6 +124,9 @@ Located in [`routes/`](routes/):
 - The dashboard sidebar position is now locale-aware: for Persian (fa), the sidebar appears on the right; for other languages, it remains on the left.
 - This is handled in the layout logic and passed as a prop to the sidebar component.
 
+### Dashboard i18n
+- The dashboard page (title, breadcrumbs, navigation) is now fully i18n-ready and supports both Persian (fa) and English (en).
+
 ### Accessibility & UX
 - `<html lang>` and `dir` attributes are always in sync with the current locale.
 - All forms and navigation are keyboard accessible.
