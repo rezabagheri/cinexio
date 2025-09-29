@@ -12,17 +12,19 @@ import type { User } from '@/types';
 import { Link, router } from '@inertiajs/vue3';
 import { LogOut, Settings } from 'lucide-vue-next';
 import { useI18n } from 'vue-i18n';
+import { computed } from 'vue';
 
 interface Props {
     user: User;
 }
 
+defineProps<Props>();
+const { t, locale } = useI18n();
+const isFa = computed(() => locale.value === 'fa');
+
 const handleLogout = () => {
     router.flushAll();
 };
-
-defineProps<Props>();
-const { t } = useI18n();
 </script>
 
 <template>
@@ -54,3 +56,12 @@ const { t } = useI18n();
         </Link>
     </DropdownMenuItem>
 </template>
+
+<style scoped>
+.menu-rtl {
+  direction: rtl;
+  text-align: right;
+}
+</style>
+
+<!-- Add menu-rtl class to DropdownMenuContent in NavUser.vue -->

@@ -14,10 +14,14 @@ import {
 import { usePage } from '@inertiajs/vue3';
 import { ChevronsUpDown } from 'lucide-vue-next';
 import UserMenuContent from './UserMenuContent.vue';
+import { useI18n } from 'vue-i18n';
+import { computed } from 'vue';
 
 const page = usePage();
 const user = page.props.auth.user;
 const { isMobile, state } = useSidebar();
+const { locale } = useI18n();
+const isFa = computed(() => locale.value === 'fa');
 </script>
 
 <template>
@@ -36,6 +40,7 @@ const { isMobile, state } = useSidebar();
                 </DropdownMenuTrigger>
                 <DropdownMenuContent
                     class="w-(--reka-dropdown-menu-trigger-width) min-w-56 rounded-lg"
+                    :class="{ 'menu-rtl': isFa }"
                     :side="
                         isMobile
                             ? 'bottom'
