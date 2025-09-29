@@ -74,6 +74,12 @@ const messages = {
     appearanceLight: 'Light',
     appearanceDark: 'Dark',
     appearanceSystem: 'System',
+    myArchive: 'My Archive',
+    myArchivePlaceholder: 'Your movies will appear here. Search, edit, or add new movies to your archive.',
+    friendsList: 'Friends List',
+    friendsListPlaceholder: 'Your friends will appear here. Search or add new friends.',
+    globalMovieSearch: 'Global Movie Search',
+    globalMovieSearchPlaceholder: 'Search for any movie and see who owns it.',
   },
   fa: {
     welcome: 'خوش آمدید',
@@ -148,6 +154,12 @@ const messages = {
     appearanceLight: 'روشن',
     appearanceDark: 'تاریک',
     appearanceSystem: 'سیستم',
+    myArchive: 'آرشیو من',
+    myArchivePlaceholder: 'فیلم‌های شما اینجا نمایش داده می‌شوند. جستجو، ویرایش یا فیلم جدید به آرشیو خود اضافه کنید.',
+    friendsList: 'لیست دوستان',
+    friendsListPlaceholder: 'دوستان شما اینجا نمایش داده می‌شوند. جستجو یا دوست جدید اضافه کنید.',
+    globalMovieSearch: 'جستجوی سراسری فیلم',
+    globalMovieSearchPlaceholder: 'هر فیلمی را جستجو کنید و ببینید چه کسی آن را دارد.',
   },
 }
 
