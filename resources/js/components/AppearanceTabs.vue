@@ -29,7 +29,7 @@ const tabs = [
             ]"
         >
             <component :is="Icon" class="-ml-1 h-4 w-4" />
-            <span class="ml-1.5 text-sm">{{ label }}</span>
+            <span :class="[$i18n.locale === 'fa' ? 'mr-1.5' : 'ml-1.5', 'text-sm']">{{ label }}</span>
         </button>
     </div>
 </template>
