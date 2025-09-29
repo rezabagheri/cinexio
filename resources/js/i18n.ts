@@ -50,6 +50,12 @@ const messages = {
     areYouSureDelete: 'Are you sure you want to delete your account?',
     deleteConsequences: 'Once your account is deleted, all of its resources and data will also be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.',
     cancel: 'Cancel',
+    passwordSettings: 'Password settings',
+    updatePassword: 'Update password',
+    passwordDesc: 'Ensure your account is using a long, random password to stay secure',
+    currentPassword: 'Current password',
+    newPassword: 'New password',
+    savePassword: 'Save password',
   },
   fa: {
     welcome: 'خوش آمدید',
@@ -100,6 +106,12 @@ const messages = {
     areYouSureDelete: 'آیا مطمئن هستید که می‌خواهید حساب کاربری خود را حذف کنید؟',
     deleteConsequences: 'پس از حذف حساب کاربری، تمام اطلاعات و داده‌های شما به طور دائمی حذف خواهد شد. لطفاً برای تایید، رمز عبور خود را وارد کنید.',
     cancel: 'انصراف',
+    passwordSettings: 'تنظیمات رمز عبور',
+    updatePassword: 'تغییر رمز عبور',
+    passwordDesc: 'برای امنیت بیشتر، از رمز عبور قوی و تصادفی استفاده کنید',
+    currentPassword: 'رمز عبور فعلی',
+    newPassword: 'رمز عبور جدید',
+    savePassword: 'ذخیره رمز عبور',
   },
 }
 
