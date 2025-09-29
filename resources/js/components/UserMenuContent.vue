@@ -36,8 +36,14 @@ const handleLogout = () => {
     <DropdownMenuSeparator />
     <DropdownMenuGroup>
         <DropdownMenuItem :as-child="true">
-            <Link class="block w-full" :href="edit()" prefetch as="button">
-                <Settings class="mr-2 h-4 w-4" />
+            <Link
+                class="block w-full"
+                :class="isFa ? 'flex flex-row-reverse items-end justify-end text-right' : ''"
+                :href="edit()"
+                prefetch
+                as="button"
+            >
+                <Settings :class="isFa ? 'ml-2 h-4 w-4' : 'mr-2 h-4 w-4'" />
                 {{ t('settings') }}
             </Link>
         </DropdownMenuItem>
@@ -46,12 +52,13 @@ const handleLogout = () => {
     <DropdownMenuItem :as-child="true">
         <Link
             class="block w-full"
+            :class="isFa ? 'flex flex-row-reverse items-end justify-end text-right' : ''"
             :href="logout()"
             @click="handleLogout"
             as="button"
             data-test="logout-button"
         >
-            <LogOut class="mr-2 h-4 w-4" />
+            <LogOut :class="isFa ? 'ml-2 h-4 w-4' : 'mr-2 h-4 w-4'" />
             {{ t('logout') }}
         </Link>
     </DropdownMenuItem>
@@ -63,5 +70,3 @@ const handleLogout = () => {
   text-align: right;
 }
 </style>
-
-<!-- Add menu-rtl class to DropdownMenuContent in NavUser.vue -->
