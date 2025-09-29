@@ -22,11 +22,14 @@ const messages = {
     passwordsDoNotMatch: 'Passwords do not match.',
     registerSuccess: 'Registration successful! Please log in.',
     loginFailed: 'Login failed. Please check your credentials.',
-    logout: 'Logout',
+    logout: 'Log out',
     home: 'Home',
-      name: 'Name',
-      nameRequired: 'Name is required.',
+    name: 'Name',
+    nameRequired: 'Name is required.',
     dashboard: 'Dashboard',
+    githubRepo: 'Github Repo',
+    documentation: 'Documentation',
+    settings: 'Settings',
     // ...
   },
   fa: {
@@ -52,9 +55,12 @@ const messages = {
     loginFailed: 'ورود ناموفق بود. لطفا اطلاعات خود را بررسی کنید.',
     logout: 'خروج',
     home: 'خانه',
-      name: 'نام',
-      nameRequired: 'وارد کردن نام الزامی است.',
+    name: 'نام',
+    nameRequired: 'وارد کردن نام الزامی است.',
     dashboard: 'داشبورد',
+    githubRepo: 'مخزن گیت‌هاب',
+    documentation: 'مستندات',
+    settings: 'تنظیمات',
     // ...
   },
 }

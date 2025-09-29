@@ -16,12 +16,15 @@ import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/vue3';
 import { BookOpen, Folder, LayoutGrid } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
+import { useI18n } from 'vue-i18n';
 
 defineProps<{ side?: 'left' | 'right' }>();
 
+const { t } = useI18n();
+
 const mainNavItems: NavItem[] = [
     {
-        title: 'Dashboard',
+        title: t('dashboard'),
         href: dashboard(),
         icon: LayoutGrid,
     },
@@ -29,12 +32,12 @@ const mainNavItems: NavItem[] = [
 
 const footerNavItems: NavItem[] = [
     {
-        title: 'Github Repo',
+        title: t('githubRepo'),
         href: 'https://github.com/laravel/vue-starter-kit',
         icon: Folder,
     },
     {
-        title: 'Documentation',
+        title: t('documentation'),
         href: 'https://laravel.com/docs/starter-kits#vue',
         icon: BookOpen,
     },
