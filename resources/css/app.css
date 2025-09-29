@@ -1,5 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap');
 @import 'swiper/css/pagination';
-@import url('https://cdn.fontcdn.ir/Fonts/Vazir/Vazir.css');
 
 .welcome-page {
     background: linear-gradient(180deg, #181818 0%, #111 100%);
@@ -203,5 +203,11 @@
 }
 
 html[lang='fa'], body[lang='fa'] {
-  font-family: Vazir, 'Vazir', Tahoma, Arial, sans-serif !important;
+    font-family: 'Vazirmatn', Vazir, Tahoma, Arial, sans-serif !important;
+    direction: rtl !important;
+    text-align: right !important;
+}
+
+.font-sans[lang='fa'], [lang='fa'] .font-sans {
+    font-family: 'Vazirmatn', Vazir, Tahoma, Arial, sans-serif !important;
 }

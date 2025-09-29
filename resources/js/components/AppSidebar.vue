@@ -14,7 +14,7 @@ import {
 import { dashboard } from '@/routes';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/vue3';
-import { BookOpen, Folder, LayoutGrid } from 'lucide-vue-next';
+import { BookOpen, Folder, LayoutGrid, FileArchive, Users, Search } from 'lucide-vue-next';
 import AppLogo from './AppLogo.vue';
 import { useI18n } from 'vue-i18n';
 
@@ -27,6 +27,21 @@ const mainNavItems: NavItem[] = [
         title: t('dashboard'),
         href: dashboard(),
         icon: LayoutGrid,
+    },
+    {
+        title: t('myArchive'),
+        href: '/dashboard#my-archive', // Placeholder, update to real route if needed
+        icon: FileArchive,
+    },
+    {
+        title: t('friendsList'),
+        href: '/dashboard#friends-list', // Placeholder, update to real route if needed
+        icon: Users,
+    },
+    {
+        title: t('globalMovieSearch'),
+        href: '/dashboard#global-movie-search', // Placeholder, update to real route if needed
+        icon: Search,
     },
 ];
 

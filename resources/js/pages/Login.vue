@@ -16,13 +16,15 @@
         <div class="rounded-md shadow-sm -space-y-px">
           <div class="mb-4">
             <label for="email" class="block text-sm font-medium text-gray-200">{{ $t('email') }}</label>
-            <input v-model="form.email" id="email" name="email" type="email" autocomplete="email" required class="appearance-none rounded relative block w-full px-3 py-2 bg-gray-800 border border-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm" :class="{'border-red-500': errors.email}" />
+            <input v-model="form.email" id="email" name="email" type="email" autocomplete="email" required class="appearance-none rounded relative block w-full px-3 py-2 bg-gray-800 border border-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm" :class="{'border-red-500': errors.email || serverErrors.email}" />
             <p v-if="errors.email" class="text-red-400 text-xs mt-1">{{ errors.email }}</p>
+            <p v-if="serverErrors.email" class="text-red-400 text-xs mt-1">{{ serverErrors.email }}</p>
           </div>
           <div class="mb-4">
             <label for="password" class="block text-sm font-medium text-gray-200">{{ $t('password') }}</label>
-            <input v-model="form.password" id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded relative block w-full px-3 py-2 bg-gray-800 border border-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm" :class="{'border-red-500': errors.password}" />
+            <input v-model="form.password" id="password" name="password" type="password" autocomplete="current-password" required class="appearance-none rounded relative block w-full px-3 py-2 bg-gray-800 border border-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm" :class="{'border-red-500': errors.password || serverErrors.password}" />
             <p v-if="errors.password" class="text-red-400 text-xs mt-1">{{ errors.password }}</p>
+            <p v-if="serverErrors.password" class="text-red-400 text-xs mt-1">{{ serverErrors.password }}</p>
           </div>
           <div class="flex items-center mb-4">
             <input v-model="form.remember" id="remember" name="remember" type="checkbox" class="h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded" />
@@ -44,10 +46,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+
+import { ref, onMounted, computed } from 'vue'
 import AuthLayout from '@/layouts/AuthLayout.vue'
 import { useI18n } from 'vue-i18n'
+import { router, usePage } from '@inertiajs/vue3'
 const { t, locale } = useI18n()
+const page = usePage()
+const serverErrors = computed(() => page.props.errors || {})
 
 onMounted(() => {
   const urlParams = new URLSearchParams(window.location.search)
@@ -76,7 +82,10 @@ function submit() {
   if (!form.value.password) {
     errors.value.password = t('passwordRequired')
   }
-  // TODO: Add API call for login
+  if (errors.value.email || errors.value.password) {
+    return
+  }
+  router.post('/login', form.value)
 }
 </script>
 

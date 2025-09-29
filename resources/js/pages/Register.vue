@@ -15,19 +15,28 @@
       <form @submit.prevent="submit" class="mt-8 space-y-6">
         <div class="rounded-md shadow-sm -space-y-px">
           <div class="mb-4">
+            <label for="name" class="block text-sm font-medium text-gray-200">{{ $t('name') || 'Name' }}</label>
+            <input v-model="form.name" id="name" name="name" type="text" autocomplete="name" required class="appearance-none rounded relative block w-full px-3 py-2 bg-gray-800 border border-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm" :class="{'border-red-500': errors.name || serverErrors.name}" />
+            <p v-if="errors.name" class="text-red-400 text-xs mt-1">{{ errors.name }}</p>
+            <p v-if="serverErrors.name" class="text-red-400 text-xs mt-1">{{ serverErrors.name }}</p>
+          </div>
+          <div class="mb-4">
             <label for="email" class="block text-sm font-medium text-gray-200">{{ $t('email') }}</label>
-            <input v-model="form.email" id="email" name="email" type="email" autocomplete="email" required class="appearance-none rounded relative block w-full px-3 py-2 bg-gray-800 border border-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm" :class="{'border-red-500': errors.email}" />
+            <input v-model="form.email" id="email" name="email" type="email" autocomplete="email" required class="appearance-none rounded relative block w-full px-3 py-2 bg-gray-800 border border-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm" :class="{'border-red-500': errors.email || serverErrors.email}" />
             <p v-if="errors.email" class="text-red-400 text-xs mt-1">{{ errors.email }}</p>
+            <p v-if="serverErrors.email" class="text-red-400 text-xs mt-1">{{ serverErrors.email }}</p>
           </div>
           <div class="mb-4">
             <label for="password" class="block text-sm font-medium text-gray-200">{{ $t('password') }}</label>
-            <input v-model="form.password" id="password" name="password" type="password" autocomplete="new-password" required class="appearance-none rounded relative block w-full px-3 py-2 bg-gray-800 border border-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm" :class="{'border-red-500': errors.password}" />
+            <input v-model="form.password" id="password" name="password" type="password" autocomplete="new-password" required class="appearance-none rounded relative block w-full px-3 py-2 bg-gray-800 border border-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm" :class="{'border-red-500': errors.password || serverErrors.password}" />
             <p v-if="errors.password" class="text-red-400 text-xs mt-1">{{ errors.password }}</p>
+            <p v-if="serverErrors.password" class="text-red-400 text-xs mt-1">{{ serverErrors.password }}</p>
           </div>
           <div class="mb-4">
             <label for="password_confirmation" class="block text-sm font-medium text-gray-200">{{ $t('confirmPassword') }}</label>
-            <input v-model="form.password_confirmation" id="password_confirmation" name="password_confirmation" type="password" autocomplete="new-password" required class="appearance-none rounded relative block w-full px-3 py-2 bg-gray-800 border border-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm" :class="{'border-red-500': errors.password_confirmation}" />
+            <input v-model="form.password_confirmation" id="password_confirmation" name="password_confirmation" type="password" autocomplete="new-password" required class="appearance-none rounded relative block w-full px-3 py-2 bg-gray-800 border border-gray-700 placeholder-gray-400 text-white focus:outline-none focus:ring-primary focus:border-primary focus:z-10 sm:text-sm" :class="{'border-red-500': errors.password_confirmation || serverErrors.password_confirmation}" />
             <p v-if="errors.password_confirmation" class="text-red-400 text-xs mt-1">{{ errors.password_confirmation }}</p>
+            <p v-if="serverErrors.password_confirmation" class="text-red-400 text-xs mt-1">{{ serverErrors.password_confirmation }}</p>
           </div>
         </div>
         <div>
@@ -45,9 +54,11 @@
 </template>
 
 <script setup lang="ts">
+
 import { ref, onMounted } from 'vue'
 import AuthLayout from '@/layouts/AuthLayout.vue'
 import { useI18n } from 'vue-i18n'
+import { router } from '@inertiajs/vue3'
 const { t, locale } = useI18n()
 
 onMounted(() => {
@@ -58,11 +69,18 @@ onMounted(() => {
   }
 })
 
+
+import { computed } from 'vue'
+import { usePage } from '@inertiajs/vue3'
+
 const form = ref({
+  name: '',
   email: '',
   password: '',
   password_confirmation: '',
 })
+const page = usePage()
+const serverErrors = computed(() => page.props.errors || {})
 
 const errors = ref({
   email: '',
@@ -71,7 +89,10 @@ const errors = ref({
 })
 
 function submit() {
-  errors.value = { email: '', password: '', password_confirmation: '' }
+  errors.value = { name: '', email: '', password: '', password_confirmation: '' }
+  if (!form.value.name) {
+    errors.value.name = t('nameRequired') || 'Name is required.'
+  }
   if (!form.value.email) {
     errors.value.email = t('emailRequired')
   }
@@ -81,7 +102,10 @@ function submit() {
   if (form.value.password !== form.value.password_confirmation) {
     errors.value.password_confirmation = t('passwordsDoNotMatch')
   }
-  // TODO: Add API call for registration
+  if (errors.value.name || errors.value.email || errors.value.password || errors.value.password_confirmation) {
+    return
+  }
+  router.post('/register', form.value)
 }
 </script>
 

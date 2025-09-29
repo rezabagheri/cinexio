@@ -109,19 +109,21 @@ Feel free to check off items as you complete them!
 We are building Cinexio in clear, focused phases. Each phase is tracked in the checklist below. As features are completed, checkboxes will be marked off.
 
 ### Current Phase: User Movie Submission
-- [ ] User-facing controller for movie submission
-- [ ] Movie submission form (view/UI)
-- [ ] Validation and error handling
-- [ ] User-specific movie listing
-- [ ] Tests for movie submission
+[x] Add Friends List Section
+  - Friends List is now a dedicated Vue component (`FriendsListBox.vue`) and fully i18n-ready.
+[x] Add Global Movie Search Section
+  - Global Movie Search is now a dedicated Vue component (`GlobalMovieSearchBox.vue`) and fully i18n-ready.
 
-### Upcoming Phases
-- [ ] Series/season/episode management
-- [ ] Social features (friend requests, activity feed, etc.)
-- [ ] Sharing and notifications
-- [ ] API endpoints
-- [ ] Frontend SPA (Vue/React/Inertia.js)
-- [ ] Responsive design and accessibility
+[x] Modular dashboard: All main dashboard sections (My Archive, Friends List, Global Movie Search) are now implemented as independent Vue components for maintainability and scalability.
+## Dashboard Component Structure
+
+The dashboard is now fully modular. Each main section is implemented as a dedicated Vue component:
+
+- `MyArchiveBox.vue`: User's movie archive, search, and actions
+- `FriendsListBox.vue`: Friends list, search, and actions
+- `GlobalMovieSearchBox.vue`: Global movie search UI
+
+This structure keeps `Dashboard.vue` clean and makes it easy to extend or maintain each section independently.
 - [ ] Full test coverage
 
 ---
