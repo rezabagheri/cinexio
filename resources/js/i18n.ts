@@ -30,7 +30,14 @@ const messages = {
     githubRepo: 'Github Repo',
     documentation: 'Documentation',
     settings: 'Settings',
-    // ...
+    profileSettings: 'Profile settings',
+    profileInformation: 'Profile information',
+    updateNameEmail: 'Update your name and email address',
+    emailUnverified: 'Your email address is unverified.',
+    resendVerification: 'Click here to resend the verification email.',
+    verificationSent: 'A new verification link has been sent to your email address.',
+    save: 'Save',
+    saved: 'Saved.',
   },
   fa: {
     welcome: 'خوش آمدید',
@@ -61,7 +68,14 @@ const messages = {
     githubRepo: 'مخزن گیت‌هاب',
     documentation: 'مستندات',
     settings: 'تنظیمات',
-    // ...
+    profileSettings: 'تنظیمات پروفایل',
+    profileInformation: 'اطلاعات پروفایل',
+    updateNameEmail: 'نام و ایمیل خود را به‌روزرسانی کنید',
+    emailUnverified: 'ایمیل شما تایید نشده است.',
+    resendVerification: 'برای ارسال مجدد ایمیل تایید اینجا کلیک کنید.',
+    verificationSent: 'لینک تایید جدید به ایمیل شما ارسال شد.',
+    save: 'ذخیره',
+    saved: 'ذخیره شد.',
   },
 }
 
