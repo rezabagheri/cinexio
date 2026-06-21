@@ -1,6 +1,7 @@
 <?php
 
-     use Illuminate\Database\Migrations\Migration;
+use App\Enums\FriendRequestStatus;
+use Illuminate\Database\Migrations\Migration;
      use Illuminate\Database\Schema\Blueprint;
      use Illuminate\Support\Facades\Schema;
 
@@ -19,7 +20,7 @@
                  $table->id()->comment('Primary key for the friend request');
                  $table->foreignId('sender_id')->constrained('users')->onDelete('cascade')->comment('Foreign key referencing the sender\'s user table');
                  $table->foreignId('receiver_id')->constrained('users')->onDelete('cascade')->comment('Foreign key referencing the receiver\'s user table');
-                 $table->enum('status', ['pending', 'accepted', 'rejected'])->default('pending')->comment('Status of the friend request');
+                 $table->enum('status', FriendRequestStatus::cases())->default('pending')->comment('Status of the friend request');
                  $table->string('message')->nullable()->comment('Optional message with the friend request');
                  $table->timestamps();
                  $table->unique(['sender_id', 'receiver_id']);

@@ -18,5 +18,6 @@ enum FriendRequestStatus: string
 {
     case Pending = 'pending';
     case Accepted = 'accepted';
+    case Blocked = 'blocked';
     case Rejected = 'rejected';
 }

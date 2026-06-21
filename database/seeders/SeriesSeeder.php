@@ -102,7 +102,6 @@ class SeriesSeeder extends Seeder
                         'duration' => $faker->numberBetween(20, 60),
                         'video_url' => $faker->optional()->url,
                         'disk_id' => null,
-                        'subtitles' => null,
                         'quality' => $faker->optional()->randomElement(['SD', 'HD', 'FullHD', '4K']),
                     ]);
                 }

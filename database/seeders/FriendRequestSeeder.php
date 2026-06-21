@@ -35,6 +35,7 @@ class FriendRequestSeeder extends Seeder
             FriendRequestStatus::Pending,
             FriendRequestStatus::Accepted,
             FriendRequestStatus::Rejected,
+            FriendRequestStatus::Blocked,
         ];
         $total = 0;
         foreach ($userIds as $senderId) {

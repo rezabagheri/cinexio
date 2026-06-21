@@ -2,6 +2,12 @@
 
 [![Laravel](https://img.shields.io/badge/Laravel-12.x-red?logo=laravel)](https://laravel.com/)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Status](https://img.shields.io/badge/status-work%20in%20progress-orange.svg)](#)
+
+> ⚠️ **Work in progress — not complete and not production-ready.**
+> Cinexio is under active development. It is published for portfolio and
+> demonstration purposes only. Features may be unfinished, broken, or change
+> without notice — **please do not download or deploy it as a finished product.**
 
 A modern web application for managing your personal movie and series archive, with powerful social networking features. Built with Laravel.
 

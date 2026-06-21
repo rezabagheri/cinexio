@@ -79,7 +79,12 @@ const messages = {
     friendsList: 'Friends List',
     friendsListPlaceholder: 'Your friends will appear here. Search or add new friends.',
     globalMovieSearch: 'Global Movie Search',
-    globalMovieSearchPlaceholder: 'Search for any movie and see who owns it.',
+  globalMovieSearchPlaceholder: 'Search for any movie and see who owns it.',
+  addToArchive: 'Add to Archive',
+  wantToHave: 'Want to Have',
+  inMyArchive: 'In My Archive',
+  notInMyArchive: 'Not in My Archive',
+  rating: 'Rating',
   },
   fa: {
     welcome: 'خوش آمدید',
@@ -159,7 +164,12 @@ const messages = {
     friendsList: 'لیست دوستان',
     friendsListPlaceholder: 'دوستان شما اینجا نمایش داده می‌شوند. جستجو یا دوست جدید اضافه کنید.',
     globalMovieSearch: 'جستجوی سراسری فیلم',
-    globalMovieSearchPlaceholder: 'هر فیلمی را جستجو کنید و ببینید چه کسی آن را دارد.',
+  globalMovieSearchPlaceholder: 'هر فیلمی را جستجو کنید و ببینید چه کسی آن را دارد.',
+  addToArchive: 'افزودن به آرشیو',
+  wantToHave: 'دوست دارم داشته باشم',
+  inMyArchive: 'در آرشیو من',
+  notInMyArchive: 'در آرشیو من نیست',
+  rating: 'امتیاز',
   },
 }
 
