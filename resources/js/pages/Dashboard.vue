@@ -4,7 +4,6 @@ import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/vue3';
 import { useI18n } from 'vue-i18n';
-import PlaceholderPattern from '@/components/PlaceholderPattern.vue';
 import MyArchiveBox from '@/components/MyArchiveBox.vue';
 import FriendsListBox from '@/components/FriendsListBox.vue';
 import GlobalMovieSearchBox from '@/components/GlobalMovieSearchBox.vue';

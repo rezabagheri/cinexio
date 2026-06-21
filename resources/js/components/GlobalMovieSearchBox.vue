@@ -1,6 +1,6 @@
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted } from 'vue';
+import { ref, watch, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import MovieCard from '@/components/MovieCard.vue';
 
@@ -22,7 +22,6 @@ const movies = ref<Movie[]>([]);
 const loading = ref(false);
 const page = ref(1);
 const totalPages = ref(1);
-const perPage = 20;
 
 const fetchMovies = async () => {
   loading.value = true;
@@ -37,7 +36,7 @@ const fetchMovies = async () => {
       wantToHave: Math.random() > 0.7, // TODO: Replace with real user data
     }));
     totalPages.value = 1;
-  } catch (e) {
+  } catch {
     movies.value = [];
     totalPages.value = 1;
   } finally {
